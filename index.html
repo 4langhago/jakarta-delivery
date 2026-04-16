@@ -1,57 +1,190 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>자카르타 K-Food 배달 (WhatsApp 연동)</title>
     <style>
         /* 1. 디자인 및 반응형 레이아웃 */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
-        header { background-color: #d32f2f; color: white; padding: 15px; text-align: center; font-size: 20px; font-weight: bold; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .container { padding: 15px; padding-bottom: 80px; }
-        .card { background: white; border-radius: 10px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.2s; cursor: pointer; border-left: 5px solid #d32f2f; }
-        .card:active { transform: scale(0.98); background-color: #f9f9f9; }
-        .title { font-size: 18px; font-weight: bold; margin-bottom: 5px; color: #222; }
-        .subtitle { font-size: 13px; color: #666; line-height: 1.4; }
-        .price { font-size: 16px; color: #d32f2f; font-weight: bold; margin-top: 10px; }
-        
-        button { background-color: #d32f2f; color: white; border: none; padding: 12px 15px; border-radius: 5px; font-weight: bold; width: 100%; cursor: pointer; margin-top: 10px; font-size: 16px; transition: background-color 0.2s; }
-        button:active { background-color: #b71c1c; }
-        
-        input[type="datetime-local"], input[type="text"] { width: 100%; padding: 12px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 15px; }
-        
-        .view { display: none; }
-        .view.active { display: block; }
-        
-        .bottom-bar { position: fixed; bottom: 0; width: 100%; background: white; padding: 15px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
-        .bottom-bar button { width: auto; margin-top: 0; padding: 10px 20px; font-size: 15px; }
-        
-        .thumb { width: 85px; height: 85px; background-color: #f0f0f0; border-radius: 8px; margin-right: 15px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; border: 1px solid #eee; }
-        .category-sep { font-size: 14px; font-weight: bold; color: #d32f2f; margin: 20px 0 10px 0; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            padding: 15px;
+            padding-bottom: 80px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: 0.2s;
+            cursor: pointer;
+            border-left: 5px solid #d32f2f;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+            background-color: #f9f9f9;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .price {
+            font-size: 16px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+
+        button:active {
+            background-color: #b71c1c;
+        }
+
+        input[type="datetime-local"],
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        .view {
+            display: none;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .bottom-bar button {
+            width: auto;
+            margin-top: 0;
+            padding: 10px 20px;
+            font-size: 15px;
+        }
+
+        .thumb {
+            width: 85px;
+            height: 85px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            margin-right: 15px;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .category-sep {
+            font-size: 14px;
+            font-weight: bold;
+            color: #d32f2f;
+            margin: 20px 0 10px 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
     </style>
 </head>
+
 <body>
 
     <header id="header-title">식당 선택</header>
 
     <div id="view-restaurants" class="view active container">
         <div class="card" onclick="showMenus('daegamjib', '대감집 (Daegamjib)')">
-            <div class="title">대감집 (Daegamjib)</div><div class="subtitle">직접 만든 수제 두부 요리와 정통 갈비 구이</div>
+            <div class="title">대감집 (Daegamjib)</div>
+            <div class="subtitle">직접 만든 수제 두부 요리와 정통 갈비 구이</div>
         </div>
         <div class="card" onclick="showMenus('chunghaesu', '청해수산 (Chunghae Soosan)')">
-            <div class="title">청해수산 (Chunghae Soosan)</div><div class="subtitle">임원철 사장님 - 신선한 모듬회, 다금바리, 바다장어</div>
+            <div class="title">청해수산 (Chunghae Soosan)</div>
+            <div class="subtitle">임원철 사장님 - 신선한 모듬회, 다금바리, 바다장어</div>
         </div>
         <div class="card" onclick="showMenus('tobak', '토박 (Tobak)')">
-            <div class="title">토박 (Tobak)</div><div class="subtitle">프리미엄 고기 구이 및 다양한 한국 주류</div>
+            <div class="title">토박 (Tobak)</div>
+            <div class="subtitle">프리미엄 고기 구이 및 다양한 한국 주류</div>
         </div>
         <div class="card" onclick="showMenus('chunggiwa', '청기와 (Chung Gi Wa)')">
-            <div class="title">청기와 (Chung Gi Wa)</div><div class="subtitle">정통 참숯불 구이, 우삼겹, 돼지갈비 전문</div>
+            <div class="title">청기와 (Chung Gi Wa)</div>
+            <div class="subtitle">정통 참숯불 구이, 우삼겹, 돼지갈비 전문</div>
         </div>
         <div class="card" onclick="showMenus('chefkitchen', 'Chef\'s Kitchen')">
-            <div class="title">Chef's Kitchen</div><div class="subtitle">시푸드 전문점 - 일본식 두부 뚝배기, 각종 생선 요리</div>
+            <div class="title">Chef's Kitchen</div>
+            <div class="subtitle">시푸드 전문점 - 일본식 두부 뚝배기, 각종 생선 요리</div>
         </div>
         <div class="card" onclick="showMenus('sannaedeul', '산내들 (San Nae Deul)')">
-            <div class="title">산내들 (San Nae Deul)</div><div class="subtitle">생등심, 차돌박이, 파전 등 대중적인 정통 한식</div>
+            <div class="title">산내들 (San Nae Deul)</div>
+            <div class="subtitle">생등심, 차돌박이, 파전 등 대중적인 정통 한식</div>
         </div>
     </div>
 
@@ -61,15 +194,16 @@
 
     <div id="view-cart" class="view container">
         <h3 style="margin-top:0;">📦 주문 내역 확인</h3>
-        <div id="cart-items" style="margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; font-size: 15px;"></div>
-        
+        <div id="cart-items"
+            style="margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; font-size: 15px;"></div>
+
         <h3 style="color: #25D366;">📱 배달 정보 (WhatsApp)</h3>
         <label>배달 희망 시간 (필수)</label>
         <input type="datetime-local" id="delivery-time" required>
-        
+
         <label>배달 받을 주소 (필수)</label>
         <input type="text" id="delivery-address" placeholder="예: Senopati Apt 101동 202호" required>
-        
+
         <button style="background-color: #25D366; color: white;" onclick="submitOrder()">WhatsApp 주문서 전송</button>
         <button style="background-color: #666;" onclick="goHome()">메뉴 다시 고르기</button>
     </div>
@@ -96,84 +230,90 @@
         // [전수 조사 완료] 모든 식당 전 메뉴 데이터
         const dbMenus = {
             'daegamjib': [
-                { id: 1, name: '생갈비 (150g)', price: 290000, desc: 'USA Choice Bone-in 소고기' },
-                { id: 2, name: '양념갈비 (150g)', price: 310000, desc: '주방장 특제 양념 소고기' },
-                { id: 3, name: '불고기 (180g)', price: 220000, desc: '야채쌈과 당면사리 포함' },
-                { id: 4, name: '차돌박이', price: 250000, desc: '고소한 소고기 차돌 구이' },
-                { id: 5, name: '삼겹살', price: 160000, desc: '정통 돼지 삼겹살' },
-                { id: 6, name: '콩비지찌개', price: 85000, desc: '시그니처 구수한 콩비지' },
-                { id: 7, name: '청국장찌개', price: 85000, desc: '직접 띄운 건강한 청국장' },
-                { id: 8, name: '순두부찌개', price: 85000, desc: '소고기/해물 선택 가능' },
-                { id: 9, name: '두부보쌈', price: 250000, desc: '수제 두부와 부드러운 수육' },
-                { id: 10, name: '두부제육김치', price: 180000, desc: '매콤한 제육볶음과 수제 두부' },
-                { id: 11, name: '홍어삼합', price: 450000, desc: '특별 남도 별미' },
-                { id: 12, name: '대감집 도시락', price: 150000, desc: '정성 가득한 한 끼' },
-                { id: 13, name: '두부 마카롱 (6개)', price: 120000, desc: '두부함량 70% 건강 디저트' },
-                { id: 14, name: '수제 콩물 (1L)', price: 100000, desc: '매일 아침 직접 갈아만든 진한 콩물' },
-                { id: 15, name: '생과일 주스', price: 40000, desc: '멜론, 토마토, 오렌지 등' },
-                { id: 16, name: '밀키스/AQUA', price: 25000, desc: '' }
+                { id: 1, name: '생갈비 (150g)', price: 290000, desc: 'USA Choice Bone-in 소고기', img: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=120&q=80' },
+                { id: 2, name: '양념갈비 (150g)', price: 310000, desc: '주방장 특제 양념 소고기', img: 'https://images.unsplash.com/photo-1541544180-d9ac1b648b6f?auto=format&fit=crop&w=120&q=80' },
+                { id: 3, name: '불고기 (180g)', price: 220000, desc: '야채쌈과 당면사리 포함', img: 'https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=120&q=80' },
+                { id: 4, name: '차돌박이', price: 250000, desc: '고소한 소고기 차돌 구이', img: 'https://images.unsplash.com/photo-1553163147-622ab57e31c1?auto=format&fit=crop&w=120&q=80' },
+                { id: 5, name: '삼겹살', price: 160000, desc: '정통 돼지 삼겹살', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=120&q=80' },
+                { id: 6, name: '콩비지찌개', price: 85000, desc: '시그니처 구수한 콩비지', img: 'https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=120&q=80' },
+                { id: 7, name: '청국장찌개', price: 85000, desc: '직접 띄운 건강한 청국장', img: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=120&q=80' },
+                { id: 8, name: '순두부찌개', price: 85000, desc: '소고기/해물 선택 가능', img: 'https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=120&q=80' },
+                { id: 9, name: '두부보쌈', price: 250000, desc: '수제 두부와 부드러운 수육', img: 'https://images.unsplash.com/photo-1617196034450-f9ec2d8d6472?auto=format&fit=crop&w=120&q=80' },
+                { id: 10, name: '두부제육김치', price: 180000, desc: '매콤한 제육볶음과 수제 두부', img: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=120&q=80' },
+                { id: 11, name: '두부김치', price: 140000, desc: '따끈한 두부와 매콤 김치', img: 'https://images.unsplash.com/photo-1529692236671-f1b5947b40d4?auto=format&fit=crop&w=120&q=80' },
+                { id: 12, name: '갈비탕', price: 160000, desc: '담백한 갈비 육수', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=120&q=80' },
+                { id: 13, name: '대감집 도시락', price: 150000, desc: '정성 가득한 한 끼', img: 'https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&w=120&q=80' },
+                { id: 14, name: '두부 마카롱 (6개)', price: 120000, desc: '두부함량 70% 건강 디저트', img: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=120&q=80' },
+                { id: 15, name: '수제 콩물 (1L)', price: 100000, desc: '매일 아침 직접 갈아만든 진한 콩물', img: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=120&q=80' },
+                { id: 16, name: '생과일 주스', price: 40000, desc: '멜론, 토마토, 오렌지 등', img: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=120&q=80' },
+                { id: 17, name: '밀키스/AQUA', price: 25000, desc: '', img: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=120&q=80' }
             ],
             'chunghaesu': [
-                { id: 21, name: '모듬회 (M)', price: 1200000, desc: '신선한 활어 모듬 사시미' },
-                { id: 22, name: '모듬회 (L)', price: 1500000, desc: '신선한 활어 모듬 사시미' },
-                { id: 23, name: '다금바리 (M)', price: 1300000, desc: '최고급 활 다금바리 회' },
-                { id: 24, name: '광어회', price: 1100000, desc: '쫄깃한 신선 광어회' },
-                { id: 25, name: '바다장어 구이', price: 650000, desc: '장어 2마리 구이' },
-                { id: 26, name: '산낙지', price: 300000, desc: '신선한 활낙지' },
-                { id: 27, name: '회정식 (런치)', price: 350000, desc: '사시미 정식 세트' },
-                { id: 28, name: '장어정식 (런치)', price: 250000, desc: '장어구이 런치 세트' },
-                { id: 29, name: '회덮밥', price: 180000, desc: '' },
-                { id: 30, name: '물회', price: 250000, desc: '시원하고 매콤달콤한 물회' },
-                { id: 31, name: '해물탕', price: 600000, desc: '얼큰한 해산물 전골' },
-                { id: 32, name: '전복죽', price: 150000, desc: '' },
-                { id: 33, name: '끄또쁘락', price: 20000, desc: '현지식 두부 샐러드' }
+                { id: 21, name: '모듬회 (M)', price: 1200000, desc: '신선한 활어 모듬 사시미', img: 'https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=120&q=80' },
+                { id: 22, name: '모듬회 (L)', price: 1500000, desc: '신선한 활어 모듬 사시미', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=120&q=80' },
+                { id: 23, name: '다금바리 (M)', price: 1300000, desc: '최고급 활 다금바리 회', img: 'https://images.unsplash.com/photo-1547592166-7c99112459a5?auto=format&fit=crop&w=120&q=80' },
+                { id: 24, name: '광어회', price: 1100000, desc: '쫄깃한 신선 광어회', img: 'https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=120&q=80' },
+                { id: 25, name: '바다장어 구이', price: 650000, desc: '장어 2마리 구이', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=120&q=80' },
+                { id: 26, name: '산낙지', price: 300000, desc: '신선한 활낙지', img: 'https://images.unsplash.com/photo-1516684669134-de6c241a4f7f?auto=format&fit=crop&w=120&q=80' },
+                { id: 27, name: '회정식 (런치)', price: 350000, desc: '사시미 정식 세트', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=120&q=80' },
+                { id: 28, name: '장어정식 (런치)', price: 250000, desc: '장어구이 런치 세트', img: 'https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=120&q=80' },
+                { id: 29, name: '회덮밥', price: 180000, desc: '', img: 'https://images.unsplash.com/photo-1589308078058-8734f86c0485?auto=format&fit=crop&w=120&q=80' },
+                { id: 30, name: '물회', price: 250000, desc: '시원하고 매콤달콤한 물회', img: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=120&q=80' },
+                { id: 31, name: '해물탕', price: 600000, desc: '얼큰한 해산물 전골', img: 'https://images.unsplash.com/photo-1514516870926-8f8fdf5f648c?auto=format&fit=crop&w=120&q=80' },
+                { id: 32, name: '전복죽', price: 150000, desc: '', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=120&q=80' },
+                { id: 33, name: '끄또쁘락', price: 20000, desc: '현지식 두부 샐러드', img: 'https://images.unsplash.com/photo-1574272271804-482f5090d52b?auto=format&fit=crop&w=120&q=80' },
+                { id: 34, name: '새우튀김', price: 180000, desc: '바삭한 새우 튀김', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=120&q=80' }
             ],
             'tobak': [
-                { id: 41, name: '생갈비 (300g)', price: 590000, desc: '숙성 최고급 소갈비' },
-                { id: 42, name: '꽃갈비살 (130g)', price: 530000, desc: '마블링 최상급 소고기' },
-                { id: 43, name: '양념갈비 (300g)', price: 490000, desc: '' },
-                { id: 44, name: 'LA갈비', price: 470000, desc: '' },
-                { id: 45, name: '광양불고기', price: 450000, desc: '' },
-                { id: 46, name: '우설 (U-Seol)', price: 350000, desc: '' },
-                { id: 47, name: '삼겹살/항정살', price: 210000, desc: '' },
-                { id: 48, name: '쭈꾸미 삼겹살', price: 460000, desc: '2인분 기준' },
-                { id: 49, name: '보쌈 (Bo Ssam)', price: 280000, desc: '' },
-                { id: 50, name: '김치전골', price: 320000, desc: '' },
-                { id: 51, name: '잡채', price: 200000, desc: '' },
-                { id: 52, name: '갈비탕', price: 160000, desc: '' },
-                { id: 53, name: '화요 소주', price: 650000, desc: '' },
-                { id: 54, name: '일품진로', price: 600000, desc: '' },
-                { id: 55, name: '막걸리/소주', price: 170000, desc: '' }
+                { id: 41, name: '생갈비 (300g)', price: 590000, desc: '숙성 최고급 소갈비', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=120&q=80' },
+                { id: 42, name: '꽃갈비살 (130g)', price: 530000, desc: '마블링 최상급 소고기', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=120&q=80' },
+                { id: 43, name: '양념갈비 (300g)', price: 490000, desc: '', img: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=120&q=80' },
+                { id: 44, name: 'LA갈비', price: 470000, desc: '', img: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=120&q=80' },
+                { id: 45, name: '광양불고기', price: 450000, desc: '', img: 'https://images.unsplash.com/photo-1516684669134-de6c241a4f7f?auto=format&fit=crop&w=120&q=80' },
+                { id: 46, name: '우설 (U-Seol)', price: 350000, desc: '', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=120&q=80' },
+                { id: 47, name: '삼겹살/항정살', price: 210000, desc: '', img: 'https://images.unsplash.com/photo-1569058249870-4a3d8cbb7cd4?auto=format&fit=crop&w=120&q=80' },
+                { id: 48, name: '쭈꾸미 삼겹살', price: 460000, desc: '2인분 기준', img: 'https://images.unsplash.com/photo-1544091728-2f4f6203fd45?auto=format&fit=crop&w=120&q=80' },
+                { id: 49, name: '보쌈 (Bo Ssam)', price: 280000, desc: '', img: 'https://images.unsplash.com/photo-1510161028498-7f8d4b480fc2?auto=format&fit=crop&w=120&q=80' },
+                { id: 50, name: '김치전골', price: 320000, desc: '', img: 'https://images.unsplash.com/photo-1529692236671-f1b5947b40d4?auto=format&fit=crop&w=120&q=80' },
+                { id: 51, name: '잡채', price: 200000, desc: '', img: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=120&q=80' },
+                { id: 52, name: '갈비탕', price: 160000, desc: '', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=120&q=80' },
+                { id: 53, name: '화요 소주', price: 650000, desc: '', img: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=120&q=80' },
+                { id: 54, name: '일품진로', price: 600000, desc: '', img: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=120&q=80' },
+                { id: 55, name: '막걸리/소주', price: 170000, desc: '', img: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=120&q=80' }
             ],
             'chunggiwa': [
-                { id: 61, name: '우삼겹', price: 120000, desc: '청기와 대표 소고기' },
-                { id: 62, name: '매운 숯불갈비', price: 215600, desc: '' },
-                { id: 63, name: '양념 소갈비', price: 325000, desc: '' },
-                { id: 64, name: '돼지갈비', price: 135000, desc: '' },
-                { id: 65, name: '삼겹살/목살', price: 172700, desc: '' },
-                { id: 66, name: '새우구이', price: 195000, desc: '' },
-                { id: 67, name: '물/비빔냉면', price: 136400, desc: '' },
-                { id: 68, name: '차돌 된장찌개', price: 95000, desc: '' },
-                { id: 69, name: '계란찜/떡볶이', price: 80000, desc: '' }
+                { id: 61, name: '우삼겹', price: 120000, desc: '청기와 대표 소고기', img: 'https://images.unsplash.com/photo-1553163147-622ab57e31c1?auto=format&fit=crop&w=120&q=80' },
+                { id: 62, name: '매운 숯불갈비', price: 215600, desc: '', img: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=120&q=80' },
+                { id: 63, name: '양념 소갈비', price: 325000, desc: '', img: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=120&q=80' },
+                { id: 64, name: '돼지갈비', price: 135000, desc: '', img: 'https://images.unsplash.com/photo-1579613834803-0d19e12eea18?auto=format&fit=crop&w=120&q=80' },
+                { id: 65, name: '삼겹살/목살', price: 172700, desc: '', img: 'https://images.unsplash.com/photo-1529692236671-f1b5947b40d4?auto=format&fit=crop&w=120&q=80' },
+                { id: 66, name: '새우구이', price: 195000, desc: '', img: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=120&q=80' },
+                { id: 67, name: '물/비빔냉면', price: 136400, desc: '', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=120&q=80' },
+                { id: 68, name: '차돌 된장찌개', price: 95000, desc: '', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=120&q=80' },
+                { id: 69, name: '계란찜/떡볶이', price: 80000, desc: '', img: 'https://images.unsplash.com/photo-1516684669134-de6c241a4f7f?auto=format&fit=crop&w=120&q=80' },
+                { id: 70, name: '생삼겹살', price: 180000, desc: '청기와 추천 신선 삼겹살', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=120&q=80' }
             ],
             'chefkitchen': [
-                { id: 81, name: 'Sapo Seafood Tahu', price: 65000, desc: '일본식 두부 뚝배기 요리' },
-                { id: 82, name: 'Mapo Tahu', price: 47000, desc: '매콤 마파두부' },
-                { id: 83, name: 'Sunuk Lodi (100g)', price: 70000, desc: '붉은바리 생선 요리' },
-                { id: 84, name: 'Garupa (100g)', price: 39000, desc: '다금바리류 생선' },
-                { id: 85, name: 'Pomfret (100g)', price: 34000, desc: '병어류 생선' },
-                { id: 86, name: 'Ayam Goreng Mentega', price: 85000, desc: '버터 치킨 튀김' },
-                { id: 87, name: 'Mie Ulang Tahun', price: 130000, desc: '생일 축하 면' }
+                { id: 81, name: 'Sapo Seafood Tahu', price: 65000, desc: '일본식 두부 뚝배기 요리', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=120&q=80' },
+                { id: 82, name: 'Mapo Tahu', price: 47000, desc: '매콤 마파두부', img: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=120&q=80' },
+                { id: 83, name: 'Sunuk Lodi (100g)', price: 70000, desc: '붉은바리 생선 요리', img: 'https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=120&q=80' },
+                { id: 84, name: 'Garupa (100g)', price: 39000, desc: '다금바리류 생선', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=120&q=80' },
+                { id: 85, name: 'Pomfret (100g)', price: 34000, desc: '병어류 생선', img: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=120&q=80' },
+                { id: 86, name: 'Ayam Goreng Mentega', price: 85000, desc: '버터 치킨 튀김', img: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=120&q=80' },
+                { id: 87, name: 'Mie Ulang Tahun', price: 130000, desc: '생일 축하 면', img: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=120&q=80' },
+                { id: 88, name: 'Nasi Goreng', price: 70000, desc: '향긋한 인도네시아 볶음밥', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=120&q=80' },
+                { id: 89, name: 'Gado Gado', price: 65000, desc: '인도네시아 전통 야채 샐러드', img: 'https://images.unsplash.com/photo-1598515216394-7f29f6d0b0fc?auto=format&fit=crop&w=120&q=80' }
             ],
             'sannaedeul': [
-                { id: 101, name: '생등심', price: 450000, desc: '최고급 소 생등심' },
-                { id: 102, name: '차돌박이', price: 280000, desc: '' },
-                { id: 103, name: '양념 돼지갈비', price: 180000, desc: '' },
-                { id: 104, name: '갈비탕/육개장', price: 150000, desc: '' },
-                { id: 105, name: '김치/순두부찌개', price: 90000, desc: '' },
-                { id: 106, name: '해물파전', price: 150000, desc: '' },
-                { id: 107, name: '돌솥비빔밥', price: 95000, desc: '' },
-                { id: 108, name: '제육/오징어볶음', price: 170000, desc: '' }
+                { id: 101, name: '생등심', price: 450000, desc: '최고급 소 생등심', img: 'https://images.unsplash.com/photo-1553163147-622ab57e31c1?auto=format&fit=crop&w=120&q=80' },
+                { id: 102, name: '차돌박이', price: 280000, desc: '', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=120&q=80' },
+                { id: 103, name: '양념 돼지갈비', price: 180000, desc: '', img: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=120&q=80' },
+                { id: 104, name: '갈비탕/육개장', price: 150000, desc: '', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=120&q=80' },
+                { id: 105, name: '김치/순두부찌개', price: 90000, desc: '', img: 'https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=120&q=80' },
+                { id: 106, name: '해물파전', price: 150000, desc: '', img: 'https://images.unsplash.com/photo-1529692236671-f1b5947b40d4?auto=format&fit=crop&w=120&q=80' },
+                { id: 107, name: '돌솥비빔밥', price: 95000, desc: '', img: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=120&q=80' },
+                { id: 108, name: '제육/오징어볶음', price: 170000, desc: '', img: 'https://images.unsplash.com/photo-1514516870926-8f8fdf5f648c?auto=format&fit=crop&w=120&q=80' },
+                { id: 109, name: '한우육회', price: 250000, desc: '신선한 한우 육회', img: 'https://images.unsplash.com/photo-1598515216394-7f29f6d0b0fc?auto=format&fit=crop&w=120&q=80' }
             ]
         };
 
@@ -185,13 +325,13 @@
             currentResId = id; currentResName = name;
             const list = document.getElementById('menu-list');
             list.innerHTML = '';
-            
+
             dbMenus[id].forEach(m => {
                 const div = document.createElement('div');
                 div.className = 'card';
                 div.innerHTML = `
                     <div style="display:flex; align-items:flex-start;">
-                        <div class="thumb">📷 Photo</div>
+                        <div class="thumb"><img src="${m.img}" alt="${m.name}"></div>
                         <div style="flex:1;">
                             <div class="title">${m.name}</div>
                             <div class="subtitle">${m.desc}</div>
@@ -207,11 +347,11 @@
             document.getElementById('view-menus').classList.add('active');
             document.getElementById('header-title').innerText = name;
             document.getElementById('cart-bar').style.display = 'flex';
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         }
 
         function addToCart(name, price) {
-            cart.push({name, price});
+            cart.push({ name, price });
             updateTotal();
         }
 
@@ -221,7 +361,7 @@
         }
 
         function goToCart() {
-            if(cart.length === 0) return alert('장바구니가 비어있습니다.');
+            if (cart.length === 0) return alert('장바구니가 비어있습니다.');
             const list = document.getElementById('cart-items');
             list.innerHTML = cart.map((i, idx) => `
                 <div style="margin-bottom:8px;">
@@ -229,10 +369,10 @@
                     <span style="float:right; font-weight:bold;">Rp ${i.price.toLocaleString()}</span>
                 </div>
             `).join('');
-            
+
             const total = cart.reduce((s, i) => s + i.price, 0);
             list.innerHTML += `<div style="margin-top:15px; text-align:right; font-size:18px; font-weight:bold; color:#d32f2f;">총액: Rp ${total.toLocaleString()}</div>`;
-            
+
             document.getElementById('view-menus').classList.remove('active');
             document.getElementById('view-cart').classList.add('active');
             document.getElementById('cart-bar').style.display = 'none';
@@ -250,24 +390,33 @@
             const time = document.getElementById('delivery-time').value;
             const addr = document.getElementById('delivery-address').value;
 
-            if(!time || !addr) return alert('배달 시간과 주소를 입력해주세요.');
+            if (!time || !addr) return alert('배달 시간과 주소를 입력해주세요.');
 
+            const total = cart.reduce((s, i) => s + i.price, 0);
             let msg = `*[자카르타 맛집 배달 주문서]*\n\n`;
             msg += `🏪 *식당:* ${currentResName}\n`;
             msg += `⏰ *시간:* ${time.replace('T', ' ')}\n`;
             msg += `📍 *주소:* ${addr}\n\n`;
             msg += `📋 *주문 내역:*\n`;
-            
             cart.forEach(i => msg += `- ${i.name} (Rp ${i.price.toLocaleString()})\n`);
-            msg += `\n💰 *총 합계: Rp ${cart.reduce((s,i)=>s+i.price,0).toLocaleString()}*`;
+            msg += `\n💰 *총 합계: Rp ${total.toLocaleString()}*\n`;
+            msg += `\n---\n`;
+            msg += `*[Pesanan Pengiriman Jakarta]*\n`;
+            msg += `🏪 *Restoran:* ${currentResName}\n`;
+            msg += `⏰ *Waktu:* ${time.replace('T', ' ')}\n`;
+            msg += `📍 *Alamat:* ${addr}\n\n`;
+            msg += `📋 *Pesanan:*\n`;
+            cart.forEach(i => msg += `- ${i.name} (Rp ${i.price.toLocaleString()})\n`);
+            msg += `\n💰 *Total: Rp ${total.toLocaleString()}*`;
 
             const phone = contacts[currentResId];
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-            
+
             window.open(url, '_blank');
             alert('WhatsApp 앱으로 연결됩니다. 메시지를 전송해 주세요!');
             goHome();
         }
     </script>
 </body>
+
 </html>
