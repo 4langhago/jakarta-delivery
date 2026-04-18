@@ -146,6 +146,13 @@
             display: block;
         }
 
+        .addr {
+            font-size: 12px;
+            color: #25D366;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
         .category-sep {
             font-size: 14px;
             font-weight: bold;
@@ -165,26 +172,32 @@
         <div class="card" onclick="showMenus('daegamjib', '대감집 (Daegamjib)')">
             <div class="title">대감집 (Daegamjib)</div>
             <div class="subtitle">직접 만든 수제 두부 요리와 정통 갈비 구이</div>
+            <div class="addr">📍 Jl. Wijaya 9 No. 23, Melawai, Jakarta Selatan</div>
         </div>
         <div class="card" onclick="showMenus('chunghaesu', '청해수산 (Chunghae Soosan)')">
             <div class="title">청해수산 (Chunghae Soosan)</div>
             <div class="subtitle">임원철 사장님 - 신선한 모듬회, 다금바리, 바다장어</div>
+            <div class="addr">📍 Jl. Senopati No. 49, Jakarta Selatan</div>
         </div>
         <div class="card" onclick="showMenus('tobak', '토박 (Tobak)')">
             <div class="title">토박 (Tobak)</div>
             <div class="subtitle">프리미엄 고기 구이 및 다양한 한국 주류</div>
+            <div class="addr">📍 Jl. Wolter Monginsidi No. 30, Kebayoran Baru, Jakarta Selatan</div>
         </div>
         <div class="card" onclick="showMenus('chunggiwa', '청기와 (Chung Gi Wa)')">
             <div class="title">청기와 (Chung Gi Wa)</div>
             <div class="subtitle">정통 참숯불 구이, 우삼겹, 돼지갈비 전문</div>
+            <div class="addr">📍 Jl. Dharmawangsa III No. 2, Jakarta Selatan (본점)</div>
         </div>
         <div class="card" onclick="showMenus('chefkitchen', 'Chef\'s Kitchen')">
             <div class="title">Chef's Kitchen</div>
             <div class="subtitle">시푸드 전문점 - 일본식 두부 뚝배기, 각종 생선 요리</div>
+            <div class="addr">📍 Jl. Kelapa Hibrida Raya Blok QJ2 No. 1, Kelapa Gading / Fatmawati / PIK</div>
         </div>
         <div class="card" onclick="showMenus('sannaedeul', '산내들 (San Nae Deul)')">
             <div class="title">산내들 (San Nae Deul)</div>
             <div class="subtitle">생등심, 차돌박이, 파전 등 대중적인 정통 한식</div>
+            <div class="addr">📍 Jakarta (상세 주소 문의: WhatsApp)</div>
         </div>
     </div>
 
@@ -259,7 +272,12 @@
             DAK_GALBI: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Korean_cuisine-Dakgalbi-01.jpg/500px-Korean_cuisine-Dakgalbi-01.jpg',
             BANCHAN: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Banchan.jpg/500px-Banchan.jpg',
             MAKGEOLLI: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Makgeolli_2.jpg/500px-Makgeolli_2.jpg',
-            GIMBAP: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Gimbap_%28pixabay%29.jpg/500px-Gimbap_%28pixabay%29.jpg'
+            GIMBAP: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Gimbap_%28pixabay%29.jpg/500px-Gimbap_%28pixabay%29.jpg',
+            JEONBOKJUK: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Korean_abalone_porridge-Jeonbokjuk-02.jpg/500px-Korean_abalone_porridge-Jeonbokjuk-02.jpg',
+            HOEDEOPBAP: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Korean_food-Hoedeopbap-01.jpg/500px-Korean_food-Hoedeopbap-01.jpg',
+            IKAN_BAKAR: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Gurame_bakar_kecap_2.JPG/500px-Gurame_bakar_kecap_2.JPG',
+            JEONGOL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/KOCIS_dubu-jeongol%2C_Tofu_Hot_Pot_%284556778564%29.jpg/500px-KOCIS_dubu-jeongol%2C_Tofu_Hot_Pot_%284556778564%29.jpg',
+            KOREAN_BBQ: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Korean_BBQ_Seoul.jpg/500px-Korean_BBQ_Seoul.jpg'
         };
 
         // 식당별 메뉴 (이미지: Wikimedia Commons 라벨링 사진)
@@ -268,7 +286,7 @@
                 { id: 1, name: '생갈비 (150g)', price: 290000, desc: '직접 숙성한 소갈비', img: IMG.GALBI },
                 { id: 2, name: '양념갈비 (150g)', price: 310000, desc: '달콤 짭짤한 특제 양념', img: IMG.GALBI },
                 { id: 3, name: '불고기 (180g)', price: 220000, desc: '야채쌈과 당면 포함', img: IMG.BULGOGI },
-                { id: 4, name: '차돌박이', price: 250000, desc: '고소한 차돌 구이', img: IMG.BULGOGI },
+                { id: 4, name: '차돌박이', price: 250000, desc: '고소한 차돌 구이', img: IMG.KOREAN_BBQ },
                 { id: 5, name: '삼겹살', price: 160000, desc: '두툼한 국내산 삼겹살', img: IMG.SAMGYEOPSAL },
                 { id: 6, name: '보쌈', price: 280000, desc: '수육과 김치 세트', img: IMG.BOSSAM },
                 { id: 7, name: '두부보쌈 (시그니처)', price: 250000, desc: '수제 두부와 부드러운 수육', img: IMG.BOSSAM },
@@ -288,11 +306,11 @@
                 { id: 23, name: '다금바리 회', price: 1300000, desc: '특급 다금바리 회', img: IMG.SASHIMI },
                 { id: 24, name: '광어회', price: 1100000, desc: '신선한 광어 슬라이스', img: IMG.SASHIMI },
                 { id: 25, name: '참치회', price: 980000, desc: '부드러운 참치 회', img: IMG.SASHIMI },
-                { id: 26, name: '바다장어 구이', price: 650000, desc: '달콤 짭짤한 장어 구이', img: IMG.GALBI },
-                { id: 27, name: '회덮밥', price: 180000, desc: '야채와 생선이 어우러진 덮밥', img: IMG.BIBIMBAP },
+                { id: 26, name: '바다장어 구이', price: 650000, desc: '달콤 짭짤한 장어 구이', img: IMG.IKAN_BAKAR },
+                { id: 27, name: '회덮밥', price: 180000, desc: '야채와 생선이 어우러진 덮밥', img: IMG.HOEDEOPBAP },
                 { id: 28, name: '물회', price: 250000, desc: '매콤 시원한 물회', img: IMG.SASHIMI },
-                { id: 29, name: '해물탕', price: 600000, desc: '얼큰한 해물 전골', img: IMG.JJAMPPONG },
-                { id: 30, name: '전복죽', price: 150000, desc: '부드러운 전복죽', img: IMG.GALBITANG },
+                { id: 29, name: '해물탕', price: 600000, desc: '얼큰한 해물 전골', img: IMG.JEONGOL },
+                { id: 30, name: '전복죽', price: 150000, desc: '부드러운 전복죽', img: IMG.JEONBOKJUK },
                 { id: 31, name: '산낙지', price: 300000, desc: '신선한 활낙지', img: IMG.SANNAKJI },
                 { id: 32, name: '모듬회 런치', price: 450000, desc: '점심용 실속 모듬회', img: IMG.SASHIMI }
             ],
@@ -311,7 +329,7 @@
                 { id: 52, name: '갈비탕', price: 160000, desc: '담백한 갈비탕', img: IMG.GALBITANG }
             ],
             'chunggiwa': [
-                { id: 61, name: '우삼겹', price: 120000, desc: '청기와 대표 우삼겹', img: IMG.SAMGYEOPSAL },
+                { id: 61, name: '우삼겹', price: 120000, desc: '청기와 대표 우삼겹', img: IMG.KOREAN_BBQ },
                 { id: 62, name: '매운 숯불갈비', price: 215600, desc: '매콤한 숯불 갈비', img: IMG.GALBI },
                 { id: 63, name: '양념 소갈비', price: 325000, desc: '달콤한 양념 소갈비', img: IMG.GALBI },
                 { id: 64, name: '돼지갈비', price: 135000, desc: '부드러운 돼지갈비', img: IMG.GALBI },
@@ -325,9 +343,9 @@
             'chefkitchen': [
                 { id: 81, name: 'Sapo Seafood Tahu', price: 65000, desc: '두부와 해산물 뚝배기', img: IMG.MAPO_TOFU },
                 { id: 82, name: 'Mapo Tahu', price: 47000, desc: '매콤 마파두부', img: IMG.MAPO_TOFU },
-                { id: 83, name: 'Sunuk Lodi (100g)', price: 70000, desc: '붉은바리 생선 요리', img: IMG.GROUPER },
-                { id: 84, name: 'Garupa (100g)', price: 39000, desc: '가루파(그루퍼) 생선', img: IMG.GROUPER },
-                { id: 85, name: 'Pomfret (100g)', price: 34000, desc: '팜프렛 병어 생선', img: IMG.POMFRET },
+                { id: 83, name: 'Sunuk Lodi (100g)', price: 70000, desc: '붉은바리 생선 요리', img: IMG.IKAN_BAKAR },
+                { id: 84, name: 'Garupa (100g)', price: 39000, desc: '가루파(그루퍼) 생선', img: IMG.IKAN_BAKAR },
+                { id: 85, name: 'Pomfret (100g)', price: 34000, desc: '팜프렛 병어 생선', img: IMG.IKAN_BAKAR },
                 { id: 86, name: 'Ayam Goreng Mentega', price: 85000, desc: '버터 양념 치킨', img: IMG.AYAM_GORENG },
                 { id: 87, name: 'Mie Ulang Tahun', price: 130000, desc: '생일 특별 볶음면', img: IMG.MIE_GORENG },
                 { id: 88, name: 'Nasi Goreng', price: 70000, desc: '인도네시아 볶음밥', img: IMG.NASI_GORENG },
@@ -335,7 +353,7 @@
             ],
             'sannaedeul': [
                 { id: 101, name: '생등심', price: 450000, desc: '프리미엄 생등심', img: IMG.GALBI },
-                { id: 102, name: '차돌박이', price: 280000, desc: '기름진 차돌 구이', img: IMG.BULGOGI },
+                { id: 102, name: '차돌박이', price: 280000, desc: '기름진 차돌 구이', img: IMG.KOREAN_BBQ },
                 { id: 103, name: '양념 돼지갈비', price: 180000, desc: '달콤 짭짤한 돼지갈비', img: IMG.GALBI },
                 { id: 104, name: '갈비탕', price: 150000, desc: '진한 갈비 육수', img: IMG.GALBITANG },
                 { id: 105, name: '순두부찌개', price: 90000, desc: '부드러운 순두부 찌개', img: IMG.SUNDUBU },
