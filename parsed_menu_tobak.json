@@ -1,0 +1,1316 @@
+[
+  {
+    "name": "SAENG GALBI",
+    "price": 590000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 590.000"
+  },
+  {
+    "name": "YANGNYEOM GALBI",
+    "price": 490000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 490.000"
+  },
+  {
+    "name": "KKOT GALBI SAL",
+    "price": 530000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 530.000"
+  },
+  {
+    "name": "LA GALBI",
+    "price": 470000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 470.000"
+  },
+  {
+    "name": "GWANGYANG BULGOGI",
+    "price": 450000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 450.000"
+  },
+  {
+    "name": "U-SEOL",
+    "price": 350000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 350.000"
+  },
+  {
+    "name": "SAMGYEOP SAL",
+    "price": 210000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 210.000"
+  },
+  {
+    "name": "HANGJEONG SAL",
+    "price": 210000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 210.000"
+  },
+  {
+    "name": "꽃갈비살 (g)",
+    "price": 130,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "꽃갈비살 (130g)"
+  },
+  {
+    "name": "Korean BBQ boneless beef short rip",
+    "price": 530000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 530.000"
+  },
+  {
+    "name": "생갈비 (대g)",
+    "price": 2,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "생갈비 (2대 300g)"
+  },
+  {
+    "name": "Korean BBQ beef short rip",
+    "price": 590000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 590.000"
+  },
+  {
+    "name": "양념갈비 (대g)",
+    "price": 2,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "양념갈비 (2대 300g)"
+  },
+  {
+    "name": "Korean BBQ marinated beef short rip",
+    "price": 490000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 490.000"
+  },
+  {
+    "name": "광양불고기 (g)",
+    "price": 130,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "광양불고기 (130g)"
+  },
+  {
+    "name": "Korean BBQ sliced marinated beef",
+    "price": 450000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 450.000"
+  },
+  {
+    "name": "삼겹살 (g)",
+    "price": 150,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "삼겹살 (150g)"
+  },
+  {
+    "name": "Korean BBQ pork belly",
+    "price": 210000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 210.000"
+  },
+  {
+    "name": "우설 (g)",
+    "price": 130,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "우설 (130g)"
+  },
+  {
+    "name": "Koeran BBQ ox tongue",
+    "price": 350000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 350.000"
+  },
+  {
+    "name": "Extra Vegetable and mushroom for BBQ",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "LA갈비 (대g)",
+    "price": 2,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "LA갈비 (2대 300g)"
+  },
+  {
+    "name": "Korean BBQ marinated beef short rip LA style cut",
+    "price": 470000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 470.000"
+  },
+  {
+    "name": "항정살 (g)",
+    "price": 150,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "항정살 (150g)"
+  },
+  {
+    "name": "Korean BBQ pork jowl",
+    "price": 210000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 210.000"
+  },
+  {
+    "name": "돌판 장어구이(마리)",
+    "price": 2,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "돌판 장어구이(2마리)"
+  },
+  {
+    "name": "DOLPAN JANGEO GUI",
+    "price": 540000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 540.000"
+  },
+  {
+    "name": "돌판 고추장 삼겹살인",
+    "price": 1,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "돌판 고추장 삼겹살 1인"
+  },
+  {
+    "name": "DOLPAN GOCHUJANG SAMGYEOPSAL",
+    "price": 280000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 280.000"
+  },
+  {
+    "name": "돌판 콩나물 삼겹살인",
+    "price": 1,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": " 돌판 콩나물 삼겹살 1인"
+  },
+  {
+    "name": "DOLPAN KONGNAMUL SAMGYEOPSAL",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.000"
+  },
+  {
+    "name": "돌판 콩나물 생등심인",
+    "price": 1,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "돌판 콩나물 생등심 1인"
+  },
+  {
+    "name": "DOLPAN KONGNAMUL SAENGDEUNGSIM",
+    "price": 530000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 530.000"
+  },
+  {
+    "name": "돌판 버섯 불고기인",
+    "price": 1,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": " 돌판 버섯 불고기 1인"
+  },
+  {
+    "name": "DOLPAN BEOSEOT BULGOGI",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.000"
+  },
+  {
+    "name": "DOLPAN SOGALBI JJIM",
+    "price": 590000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 590.000"
+  },
+  {
+    "name": "돌판쭈꾸미삼겹살인",
+    "price": 1,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "돌판쭈꾸미삼겹살 1인"
+  },
+  {
+    "name": "DOLPAN JJUKKUMI SAMGYEOPSAL",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.000"
+  },
+  {
+    "name": "돌판쭈꾸미볶음인",
+    "price": 1,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": " 돌판쭈꾸미볶음 1인"
+  },
+  {
+    "name": "DOLPAN JJUKKUMI BOKKEUM",
+    "price": 280000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 280.000"
+  },
+  {
+    "name": "돌판산낙지볶음인",
+    "price": 1,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": " 돌판산낙지볶음 1인"
+  },
+  {
+    "name": "DOLPAN SANNAKJI BOKKEUM",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.000"
+  },
+  {
+    "name": "돌판 장어구이 (마리)",
+    "price": 2,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "돌판 장어구이 (2마리)"
+  },
+  {
+    "name": "Grilled eel on hot stone plate",
+    "price": 540000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 540.000"
+  },
+  {
+    "name": "인분 이상 주문 가능",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.0002인분 이상 주문 가능"
+  },
+  {
+    "name": "인분 이상 주문 가능",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.0002인분 이상 주문 가능"
+  },
+  {
+    "name": "인분 이상 주문 가능",
+    "price": 280000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 280.0002인분 이상 주문 가능"
+  },
+  {
+    "name": "인분 이상 주문 가능",
+    "price": 530000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 530.0002인분 이상 주문 가능"
+  },
+  {
+    "name": "인분 이상 주문 가능",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.0002인분 이상 주문 가능"
+  },
+  {
+    "name": "인분 이상 주문 가능",
+    "price": 280000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 280.0002인분 이상 주문 가능"
+  },
+  {
+    "name": "[본 메뉴는인 이상 주문 가능합니다. This menu is available for a minimum of orders or more.]인분 이상 주문 가능",
+    "price": 2,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "[본 메뉴는 2인 이상 주문 가능합니다. This menu is available for a minimum of 2 orders or more.]2인분 이상 주문 가능"
+  },
+  {
+    "name": "Braisded prime short rip on hot stone plate",
+    "price": 590000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 590.000"
+  },
+  {
+    "name": "인분 이상 주문 가능",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.0002인분 이상 주문 가능"
+  },
+  {
+    "name": "소고기 샤부샤부 L (~인)",
+    "price": 3,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "소고기 샤부샤부 L (3~4인)"
+  },
+  {
+    "name": "Beef shabu-shabu (Large size)",
+    "price": 690000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 690.000"
+  },
+  {
+    "name": "소고기 샤부샤부 M (인)",
+    "price": 2,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "소고기 샤부샤부 M (2인)"
+  },
+  {
+    "name": "Beef shabu-shabu (Medium size)",
+    "price": 590000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 590.000"
+  },
+  {
+    "name": "SHABU-SHABU EXTRA BEEF",
+    "price": 320000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 320.000"
+  },
+  {
+    "name": "SHABU-SHABU EXTRA OCTOPUS",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "SHABU-SHABU EXTRA VEGETABLES",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "SHABU-SHABU EXTRA SHRIMP",
+    "price": 85000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 85.000"
+  },
+  {
+    "name": "SHABU-SHABU EXTRA PORRIDGE/UDONG/KALGUKSU",
+    "price": 55000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 55.000"
+  },
+  {
+    "name": "Korean BBQ beef intestines",
+    "price": 950000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 950.000"
+  },
+  {
+    "name": "Spicy beef intestine and octopus hot pot",
+    "price": 690000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 690.000"
+  },
+  {
+    "name": "Extra Kimchi Fried Rice",
+    "price": 55000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 55.000"
+  },
+  {
+    "name": "한우곱창g 추가",
+    "price": 200,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "한우곱창 200g 추가"
+  },
+  {
+    "name": "HANU GOPCHANGg (EXTRA)",
+    "price": 200,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "HANU GOPCHANG 200g (EXTRA)"
+  },
+  {
+    "name": "Extra Korean beef small intestines",
+    "price": 360000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 360.000"
+  },
+  {
+    "name": "한우대창g 추가",
+    "price": 200,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "한우대창 200g 추가"
+  },
+  {
+    "name": "HANU DAECHANGg (EXTRA)",
+    "price": 200,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "HANU DAECHANG 200g (EXTRA)"
+  },
+  {
+    "name": "Extra Korean beef large intestines",
+    "price": 280000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 280.000"
+  },
+  {
+    "name": "GODEUNGEO KIMCHI JORIM",
+    "price": 470000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 470.000"
+  },
+  {
+    "name": "KKONGCHI KIMCHI JORIM",
+    "price": 450000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 450.000"
+  },
+  {
+    "name": "DWAEJI KIMCHI JEONGOL",
+    "price": 450000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 450.000"
+  },
+  {
+    "name": "HAEMUL JEONGOL",
+    "price": 540000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 540.000"
+  },
+  {
+    "name": "BEOSEOT JEONGOL",
+    "price": 450000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 450.000"
+  },
+  {
+    "name": "BULNAK JEONGOL",
+    "price": 540000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 540.000"
+  },
+  {
+    "name": "도가니수육전골",
+    "price": 450000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 450.000도가니수육전골"
+  },
+  {
+    "name": "DOGANI SUYUK JEONGOL",
+    "price": 520000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 520.000"
+  },
+  {
+    "name": "SOGOGI BEOSEOT JEONGOL",
+    "price": 490000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 490.000"
+  },
+  {
+    "name": "SUNDAE JEONGOL",
+    "price": 490000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 490.000"
+  },
+  {
+    "name": "GALCHI JORIM",
+    "price": 430000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 430.000"
+  },
+  {
+    "name": "BUDAE JEONGOL",
+    "price": 480000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 480.000"
+  },
+  {
+    "name": "Beef and mushroom hot pot",
+    "price": 490000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 490.000"
+  },
+  {
+    "name": "Boiled ox knee slices hot pot",
+    "price": 520000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 520.000"
+  },
+  {
+    "name": "Korean army stew hot pot",
+    "price": 480000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 480.000"
+  },
+  {
+    "name": "Marinated beef and octopus hot pot",
+    "price": 540000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 540.000"
+  },
+  {
+    "name": "Braised kimchi and mackerel in hot pot",
+    "price": 470000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 470.000"
+  },
+  {
+    "name": "Braised kimchi and mackerel pike in hot pot",
+    "price": 450000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 450.000"
+  },
+  {
+    "name": "Spicy mixed seafood hot pot",
+    "price": 540000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 540.000"
+  },
+  {
+    "name": "Kimchi and pork hot pot",
+    "price": 450000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 450.000"
+  },
+  {
+    "name": "Braised cutlassfish and vegetables in hot pot",
+    "price": 430000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 430.000"
+  },
+  {
+    "name": "Spicy mushroom hot pot",
+    "price": 450000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 450.000"
+  },
+  {
+    "name": "Hand made mandu hot pot",
+    "price": 450000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 450.000"
+  },
+  {
+    "name": "Korean pork blood sausage hot pot",
+    "price": 490000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 490.000"
+  },
+  {
+    "name": "JEYUK BOKKEUM",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.000"
+  },
+  {
+    "name": "OJINGEO BOKKEUM",
+    "price": 280000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 280.000"
+  },
+  {
+    "name": "YUK JEON",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.000"
+  },
+  {
+    "name": "HAEMUL PAJEON",
+    "price": 230000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 230.000"
+  },
+  {
+    "name": "KIMCHI JEON",
+    "price": 210000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 210.000"
+  },
+  {
+    "name": "DOTORI MUK MUCHIM",
+    "price": 280000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 280.000"
+  },
+  {
+    "name": "DAEJIKIMCHI JJIM",
+    "price": 360000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 360.000"
+  },
+  {
+    "name": "고등어구이(~쪽)",
+    "price": 2,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "고등어구이(2~3쪽)"
+  },
+  {
+    "name": "GODEUNGEO GUI",
+    "price": 330000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 330.000"
+  },
+  {
+    "name": "JAPCHAE",
+    "price": 230000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 230.000"
+  },
+  {
+    "name": "TTEOKGALBI",
+    "price": 360000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 360.000"
+  },
+  {
+    "name": "YUK HOE",
+    "price": 380000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 380.000"
+  },
+  {
+    "name": "BOSSAM",
+    "price": 390000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 390.000"
+  },
+  {
+    "name": "Glass noodles with beef and vegetables",
+    "price": 230000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 230.000"
+  },
+  {
+    "name": "Seafood and green onion pancake",
+    "price": 230000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 230.000"
+  },
+  {
+    "name": "Kimchi pancake",
+    "price": 210000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 210.000"
+  },
+  {
+    "name": "Korean beef tartare",
+    "price": 380000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 380.000"
+  },
+  {
+    "name": "Beef pancake",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.000"
+  },
+  {
+    "name": "Boiled pork with radish salad and pickled cabbage",
+    "price": 390000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 390.000"
+  },
+  {
+    "name": "Acorn jelly with vegetables seasoned with soy sauce",
+    "price": 280000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 280.000"
+  },
+  {
+    "name": "고등어구이 (~쪽)",
+    "price": 2,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "고등어구이 (2~3쪽)"
+  },
+  {
+    "name": "Oven grilled mackerel",
+    "price": 330000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 330.000"
+  },
+  {
+    "name": "Stir-fried pork belly and vegetables with chili sauce",
+    "price": 290000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 290.000"
+  },
+  {
+    "name": "Stir-fried squid and vegetables with chili sauce",
+    "price": 280000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 280.000"
+  },
+  {
+    "name": "Steamed pork and kimchi",
+    "price": 360000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 360.000"
+  },
+  {
+    "name": "Korean style grilled beef patties",
+    "price": 360000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 360.000"
+  },
+  {
+    "name": "두부김치",
+    "price": 350000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 350.000 두부김치"
+  },
+  {
+    "name": "DUBU KIMCHI",
+    "price": 270000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 270.000"
+  },
+  {
+    "name": "TTEOKBOKKI",
+    "price": 180000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 180.000"
+  },
+  {
+    "name": "SANNAKJI SUYUK/HOE",
+    "price": 320000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 320.000"
+  },
+  {
+    "name": "CHEESE DAKGALBI",
+    "price": 320000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 320.000"
+  },
+  {
+    "name": "SANNAKJI BOKKEUM",
+    "price": 350000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 350.000"
+  },
+  {
+    "name": "SANNAKJI CHOMUCHIM",
+    "price": 350000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 350.000"
+  },
+  {
+    "name": "SANNAKJI TANG",
+    "price": 350000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 350.000"
+  },
+  {
+    "name": "MAEUN MUPPYEODAKBAL",
+    "price": 220000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 220.000"
+  },
+  {
+    "name": "GOLBAENGI MUCHIM",
+    "price": 390000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 390.000"
+  },
+  {
+    "name": "MARUEN ANJU",
+    "price": 250000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 250.000"
+  },
+  {
+    "name": "GOGI/KIMCHI MANDU",
+    "price": 120000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 120.000"
+  },
+  {
+    "name": "Stir-fried octopus and vegetables with chili sauce",
+    "price": 350000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 350.000"
+  },
+  {
+    "name": "Sour octopus soup",
+    "price": 350000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 350.000"
+  },
+  {
+    "name": "Octopus with vegetable seasoned with chili sauce",
+    "price": 350000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 350.000"
+  },
+  {
+    "name": "Boiled/Raw octopus",
+    "price": 320000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 320.000"
+  },
+  {
+    "name": "Steamed whelk with vegetables seasoned with chili sauce",
+    "price": 390000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 390.000"
+  },
+  {
+    "name": "고기/김치만두 (pcs)",
+    "price": 8,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "고기/김치만두 (8pcs)"
+  },
+  {
+    "name": "Steamed pork with vegetables/kimchi dumpling",
+    "price": 120000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 120.000"
+  },
+  {
+    "name": "Sliced raw cuttlefish with vegetables seasoned with chili sauce",
+    "price": 350000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 350.000"
+  },
+  {
+    "name": "Tofu with stir-fried kimchi with pork/beef",
+    "price": 270000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 270.000"
+  },
+  {
+    "name": "Korea rice cake with chilli sauce",
+    "price": 180000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 180.000"
+  },
+  {
+    "name": "Dry snacks and calamari",
+    "price": 250000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 250.000"
+  },
+  {
+    "name": "Korean style steamed egg",
+    "price": 75000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 75.000"
+  },
+  {
+    "name": "Stir-fried boneless chicken feet with chili sauce",
+    "price": 220000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 220.000"
+  },
+  {
+    "name": "Stir-fried boneless chicken thigh with chilli sauce and cheese",
+    "price": 320000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 320.000"
+  },
+  {
+    "name": "KIMCHI BOKKEUMBAP",
+    "price": 140000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 140.000"
+  },
+  {
+    "name": "SOGOGI BOKKEUMBAP",
+    "price": 140000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 140.000"
+  },
+  {
+    "name": "YACHAE JUK",
+    "price": 130000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 130.000"
+  },
+  {
+    "name": "NAKJI BIBIMBAP",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "KONGNAMUL BIBIMBAP",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "HANCHIHOE BIBIMBAP",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "DOLSOT BIBIMBAP",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "SANCHAE BIBIMBAP",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "SANCHAE YUKHOE BIBIMBAP",
+    "price": 190000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 190.000"
+  },
+  {
+    "name": "GODEUNGEO GUI JEONGSIK",
+    "price": 180000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 180.000"
+  },
+  {
+    "name": "BOSSAM JEONGSIK",
+    "price": 180000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 180.000"
+  },
+  {
+    "name": "Oven grilled mackerel with rice and soybean soup",
+    "price": 180000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 180.000"
+  },
+  {
+    "name": "Boiled pork with radish salad and pickled cabbage set with rice and soup",
+    "price": 180000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 180.000"
+  },
+  {
+    "name": "Rice with assorted vegetables and beef in stone pot",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "Rice with assorted vegetables",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "Rice with sliced beef tartare and vegetables",
+    "price": 190000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 190.000"
+  },
+  {
+    "name": "Rice with stir-fried octopus",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "Rice with bean sprout and beef",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "Rice with sliced raw cuttlefish and vegetables",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "Beef and kimchi fried rice",
+    "price": 140000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 140.000"
+  },
+  {
+    "name": "Beef and vegetable fried rice",
+    "price": 140000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 140.000"
+  },
+  {
+    "name": "Vegetable rice porridge",
+    "price": 130000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 130.000"
+  },
+  {
+    "name": "SOGOGI TTAROGUKBAP",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "YUKGAEJANG",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "JANGEO TANG",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "KIMCHI JJIGAE",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "DOENJANG JJIGAE",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "HAEMUL SUNDUBU JJIGAE",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "GALBI TANG",
+    "price": 190000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 190.000"
+  },
+  {
+    "name": "SAMGYE TANG",
+    "price": 190000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 190.000"
+  },
+  {
+    "name": "도가니탕",
+    "price": 180000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 180.000 도가니탕"
+  },
+  {
+    "name": "사골설렁탕",
+    "price": 190000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 190.000 사골설렁탕"
+  },
+  {
+    "name": "SEOLLEONG TANG",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "Beef and cabbage soup in a hot pot with rice",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "Kimchi stew in a hot pot with rice",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "Soybean paste stew in a hot pot with rice",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "Spicy seafood and soft tofu stew in a hot pot with rice",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "Ox knee soup in a hot pot with rice",
+    "price": 190000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 190.000"
+  },
+  {
+    "name": "Sliced beef soup in a hot pot with rice",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "Beef short rip soup in a hot pot with rice",
+    "price": 190000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 190.000"
+  },
+  {
+    "name": "Spicy shredded beef soup with rice",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "Korean ginseng chicken soup in a hot pot",
+    "price": 190000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 190.000"
+  },
+  {
+    "name": "Eel soup in a hot pot with rice",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "Sundae soup in a hot pot with rice",
+    "price": 180000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 180.000"
+  },
+  {
+    "name": "MUK BAP",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "TTEOKGUK",
+    "price": 140000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 140.000"
+  },
+  {
+    "name": "HAEMUL TANG",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "BEOSEOT GUKBAP",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "콩비지찌개",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000콩비지찌개"
+  },
+  {
+    "name": "KONGBIJI JJIGAE",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "TTUKBAEGI BULGOGI",
+    "price": 180000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 180.000"
+  },
+  {
+    "name": "MIYEOKGUK",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "CHEONGGUKJANG",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "KONGNAMUL HAEJANGGUK",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "HWANGTAE HAEJANGGUK",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "Bean sprout soup in a hot pot with rice",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "Dried pollack soup in a hot pot with rice",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "Marinated beef soup in a hot pot with rice",
+    "price": 180000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 180.000"
+  },
+  {
+    "name": "Pureed soybean stew in a hot pot with rice",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "Spicy seafood soup in a hot pot with rice",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "Acorn jelly in cold or hot broth with rice",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "Spicy mushroom soup in a hot pot with rice",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "Sea mustard beef soup with rice",
+    "price": 150000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 150.000"
+  },
+  {
+    "name": "Sliced rice-cake soup with mandu",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "Sliced rice-cake soup",
+    "price": 140000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 140.000"
+  },
+  {
+    "name": "Strong fermented soybean paste stew with rice",
+    "price": 170000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 170.000"
+  },
+  {
+    "name": "MUL NAENGMYEON",
+    "price": 140000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 140.000"
+  },
+  {
+    "name": "BIBIM NAENGMYEON",
+    "price": 140000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 140.000"
+  },
+  {
+    "name": "KONG GUKSU",
+    "price": 140000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 140.000"
+  },
+  {
+    "name": "HANCHI HOE GUKSU",
+    "price": 160000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 160.000"
+  },
+  {
+    "name": "HAEMUL SOMYEON",
+    "price": 140000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 140.000"
+  },
+  {
+    "name": "SHIN RAMYEON",
+    "price": 95000,
+    "desc": "PDF에서 추출된 메뉴 항목",
+    "raw": "Rp. 95.000"
+  }
+]
