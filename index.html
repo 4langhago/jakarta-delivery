@@ -236,8 +236,8 @@
             'chunghaesu': '6281316583349',
             'tobak': '628127251135',      // 사용자 확인 완료
             'chunggiwa': '628125278721',   // 구글 정보 기반
-            'chefkitchen': '6281200000000',
-            'sannaedeul': '6281200000000'
+            'chefkitchen': '', // TODO: 실제 WhatsApp 번호 확인 필요
+            'sannaedeul': ''   // TODO: 실제 WhatsApp 번호 확인 필요
         };
 
         // 메뉴 이미지: Wikimedia Commons (실제 요리 라벨링된 사진)
@@ -258,7 +258,7 @@
             GALBITANG: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Galbitang_%EA%B0%88%EB%B9%84%ED%83%95_beeniru.jpg/500px-Galbitang_%EA%B0%88%EB%B9%84%ED%83%95_beeniru.jpg',
             GYERAN_JJIM: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Gyeranjjim.jpg/500px-Gyeranjjim.jpg',
             YUKHOE: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/1001_yukhoe.jpg/500px-1001_yukhoe.jpg',
-            SASHIMI: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/241109_Shigaraki_ware_Koga_Shiga_pref_Japan01s3.jpg/500px-241109_Shigaraki_ware_Koga_Shiga_pref_Japan01s3.jpg',
+            SASHIMI: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Sashimi_002.jpg/500px-Sashimi_002.jpg',
             SANNAKJI: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Korean.cuisine-Sannakji.hoe-01.jpg/500px-Korean.cuisine-Sannakji.hoe-01.jpg',
             JJAMPPONG: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Jjampong.JPG/500px-Jjampong.JPG',
             GROUPER: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Baltimore_Aquarium_-_Mycteroperca_microlepis_-_05.jpg/500px-Baltimore_Aquarium_-_Mycteroperca_microlepis_-_05.jpg',
@@ -368,71 +368,7 @@
         let currentResId = '';
         let currentResName = '';
 
-        function getMenuImage(name) {
-            const queries = {
-                '생갈비': 'korean-barbecue-galbi',
-                '양념갈비': 'marinated-beef-ribs',
-                '불고기': 'bulgogi',
-                '차돌박이': 'beef-brisket',
-                '삼겹살': 'pork-belly',
-                '보쌈': 'bossam',
-                '두부보쌈': 'tofu-bossam',
-                '콩비지찌개': 'soybean-stew',
-                '청국장찌개': 'fermented-soybean-stew',
-                '순두부찌개': 'soft-tofu-stew',
-                '두부제육김치': 'spicy-pork-tofu',
-                '대감집 도시락': 'korean-lunchbox',
-                '두부 마카롱': 'tofu-macarons',
-                '콩물': 'soy-milk',
-                '생과일 주스': 'fresh-fruit-juice',
-                '모듬회': 'sashimi',
-                '다금바리': 'sea-bream-sashimi',
-                '광어회': 'flounder-sashimi',
-                '참치회': 'tuna-sashimi',
-                '바다장어': 'grilled-eel',
-                '산낙지': 'live-octopus',
-                '회덮밥': 'sashimi-rice-bowl',
-                '물회': 'chilled-fish-soup',
-                '해물탕': 'seafood-stew',
-                '전복죽': 'abalone-porridge',
-                '생갈비 (300g)': 'korean-beef-ribs',
-                '꽃갈비살': 'galbi-slice',
-                'LA갈비': 'LA-galbi',
-                '광양불고기': 'gwangyang-bulgogi',
-                '우설': 'ox-tongue',
-                '쭈꾸미 삼겹살': 'spicy-octopus-pork',
-                '김치전골': 'kimchi-stew',
-                '갈비탕': 'galbitang',
-                '우삼겹': 'beef-brisket-korean-barbecue',
-                '숯불갈비': 'charcoal-grilled-galbi',
-                '돼지갈비': 'pork-ribs',
-                '새우구이': 'grilled-shrimp',
-                '냉면': 'korean-cold-noodles',
-                '차돌 된장찌개': 'soybean-paste-stew',
-                '계란찜': 'steamed-egg',
-                'Sapo Seafood Tahu': 'seafood-tofu-hotpot',
-                'Mapo Tahu': 'mapo-tofu',
-                'Sunuk Lodi': 'fish-steak',
-                'Garupa': 'garoupa-fish',
-                'Pomfret': 'pomfret-fish',
-                'Ayam Goreng Mentega': 'indonesian-fried-chicken',
-                'Mie Ulang Tahun': 'birthday-noodles',
-                'Nasi Goreng': 'nasi-goreng',
-                'Gado Gado': 'gado-gado',
-                '생등심': 'sirloin-steak',
-                '차돌박이': 'beef-brisket',
-                '양념 돼지갈비': 'marinated-pork-ribs',
-                '돌솥비빔밥': 'dolsot-bibimbap',
-                '제육볶음': 'spicy-pork-stirfry',
-                '한우육회': 'beef-tartare'
-            };
-            for (const key in queries) {
-                if (name.includes(key)) {
-                    return `https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=80`;
-                }
-            }
-            return `https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=80`;
-        }
+        const FALLBACK_IMG = 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=80';
 
         function showMenus(id, name) {
             currentResId = id; currentResName = name;
@@ -442,10 +378,10 @@
             dbMenus[id].forEach(m => {
                 const div = document.createElement('div');
                 div.className = 'card';
-                const imgSrc = m.img || getMenuImage(m.name);
+                const imgSrc = m.img || FALLBACK_IMG;
                 div.innerHTML = `
                     <div style="display:flex; align-items:flex-start;">
-                        <div class="thumb"><img src="${imgSrc}" alt="${m.name}" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=80'"></div>
+                        <div class="thumb"><img src="${imgSrc}" alt="${m.name}" onerror="this.src='${FALLBACK_IMG}'"></div>
                         <div style="flex:1;">
                             <div class="title">${m.name}</div>
                             <div class="subtitle">${m.desc}</div>
@@ -465,8 +401,18 @@
         }
 
         function addToCart(name, price) {
-            cart.push({ name, price });
+            if (cart.length > 0 && cart[0].resId !== currentResId) {
+                if (!confirm('다른 식당의 메뉴가 장바구니에 있습니다. 비우고 새로 담을까요?')) return;
+                cart = [];
+            }
+            cart.push({ name, price, resId: currentResId });
             updateTotal();
+        }
+
+        function removeFromCart(idx) {
+            cart.splice(idx, 1);
+            updateTotal();
+            goToCart();
         }
 
         function updateTotal() {
@@ -479,8 +425,11 @@
             const list = document.getElementById('cart-items');
             list.innerHTML = cart.map((i, idx) => `
                 <div style="margin-bottom:8px;">
-                    ${i.name} 
-                    <span style="float:right; font-weight:bold;">Rp ${i.price.toLocaleString()}</span>
+                    ${i.name}
+                    <span style="float:right;">
+                        <strong style="margin-right:10px;">Rp ${i.price.toLocaleString()}</strong>
+                        <a href="#" onclick="removeFromCart(${idx}); return false;" style="color:#d32f2f;">삭제</a>
+                    </span>
                 </div>
             `).join('');
 
@@ -490,6 +439,9 @@
             document.getElementById('view-menus').classList.remove('active');
             document.getElementById('view-cart').classList.add('active');
             document.getElementById('cart-bar').style.display = 'none';
+
+            const now = new Date(Date.now() - new Date().getTimezoneOffset() * 60000);
+            document.getElementById('delivery-time').min = now.toISOString().slice(0, 16);
         }
 
         function goHome() {
@@ -507,6 +459,10 @@
             const addr = document.getElementById('delivery-address').value;
 
             if (!time || !addr) return alert('배달 시간과 주소를 입력해주세요.');
+            if (new Date(time).getTime() < Date.now()) return alert('배달 희망 시간은 현재 시각 이후로 선택해주세요.');
+
+            const phone = contacts[currentResId];
+            if (!phone) return alert('이 식당은 아직 연락처가 등록되지 않았습니다. 다른 식당을 이용해주세요.');
 
             const total = cart.reduce((s, i) => s + i.price, 0);
             let msg = `*[자카르타 맛집 배달 주문서]*\n\n`;
@@ -525,7 +481,6 @@
             cart.forEach(i => msg += `- ${i.name} (Rp ${i.price.toLocaleString()})\n`);
             msg += `\n💰 *Total: Rp ${total.toLocaleString()}*`;
 
-            const phone = contacts[currentResId];
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 
             window.open(url, '_blank');
