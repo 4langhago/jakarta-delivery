@@ -1091,8 +1091,9 @@
             if (existing) existing.qty++;
             else cart.push({ id: m.id, name: m.name, price: m.price, img: m.img, qty: 1 });
             updateCartBar();
-            // 살짝 피드백
-            const btn = event.currentTarget;
+            // 살짝 피드백 (전역 event는 Firefox에 없으므로 가드)
+            const ev = typeof event !== 'undefined' ? event : null;
+            const btn = ev && ev.currentTarget && ev.currentTarget.style ? ev.currentTarget : null;
             if (btn) {
                 btn.style.background = 'var(--primary)';
                 setTimeout(() => { btn.style.background = ''; }, 200);
