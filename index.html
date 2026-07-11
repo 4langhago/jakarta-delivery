@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>자카르타 K-Food 배달 (WhatsApp 연동)</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FF3D68">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="K-Food Jakarta">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet"
@@ -736,7 +744,10 @@
             'tobak': '628127251135',      // 사용자 확인 완료
             'chunggiwa': '628125278721',   // 구글 정보 기반
             'chefkitchen': '622145879360', // 유선번호 (Foodierate/Yandex 확인) — WhatsApp 등록 여부 미확인
-            'sannaedeul': ''   // TODO: 자카르타 지점 연락처 미확인 (웹 검색 결과 없음)
+            'sannaedeul': '',  // TODO: 자카르타 지점 연락처 미확인 (웹 검색 결과 없음)
+            'bornga': '6285779798282',     // SocialExpat 확인 (휴대폰)
+            'magal': '62217398350',        // PergiKuliner 확인 (유선) — WhatsApp 등록 여부 미확인
+            'samwon': '6287829921885'      // SocialExpat 확인 (휴대폰, Plaza Indonesia점)
         };
 
         // 메뉴 이미지: Wikimedia Commons (실제 요리 라벨링된 사진)
@@ -910,7 +921,10 @@
             { id: 'tobak', name: '토박 Tobak', sub: '프리미엄 숯불구이 & 한국 주류', addr: 'Jl. Wolter Monginsidi No.30', rating: 4.7, reviews: 189, time: '35-45분', fee: '무료', cats: ['bbq'], emoji: '🔥', tag: 'BEST', cover: IMG.KOREAN_BBQ },
             { id: 'chunggiwa', name: '청기와', sub: '참숯불 우삼겹 · 돼지갈비', addr: 'Jl. Dharmawangsa III No.2', rating: 4.6, reviews: 421, time: '30-40분', fee: '무료', cats: ['bbq', 'rice'], emoji: '🥩', tag: '인기', cover: IMG.SAMGYEOPSAL },
             { id: 'chefkitchen', name: "Chef's Kitchen", sub: '일본식 두부 뚝배기 & 시푸드', addr: 'Kelapa Gading / Fatmawati / PIK', rating: 4.5, reviews: 156, time: '40-55분', fee: '무료', cats: ['seafood', 'indo'], emoji: '🍲', tag: 'NEW', cover: IMG.MAPO_TOFU },
-            { id: 'sannaedeul', name: '산내들', sub: '생등심 · 파전 · 대중 한식', addr: 'Jakarta (문의)', rating: 4.6, reviews: 203, time: '30-40분', fee: '무료', cats: ['bbq', 'rice', 'stew'], emoji: '🌿', tag: '추천', cover: IMG.PAJEON }
+            { id: 'sannaedeul', name: '산내들', sub: '생등심 · 파전 · 대중 한식', addr: 'Jakarta (문의)', rating: 4.6, reviews: 203, time: '30-40분', fee: '무료', cats: ['bbq', 'rice', 'stew'], emoji: '🌿', tag: '추천', cover: IMG.PAJEON },
+            { id: 'bornga', name: '본가 Bornga', sub: '백종원 브랜드 · 우삼겹 전문 (메뉴는 WhatsApp 문의)', addr: 'Jl. Wolter Monginsidi No.65, Senopati', time: '35-45분', fee: '무료', cats: ['bbq'], emoji: '🥩', tag: 'NEW', cover: IMG.BULGOGI },
+            { id: 'magal', name: '마갈 Magal', sub: '마포갈매기 BBQ (메뉴는 WhatsApp 문의)', addr: 'Jl. Senopati No.60, Kebayoran Baru', time: '35-45분', fee: '무료', cats: ['bbq'], emoji: '🔥', tag: 'NEW', cover: IMG.SAMGYEOPSAL },
+            { id: 'samwon', name: '삼원가든 Samwon Garden', sub: '1976년 전통 갈비 명가 (메뉴는 WhatsApp 문의)', addr: 'Plaza Indonesia, Jl. M.H. Thamrin', time: '40-55분', fee: '무료', cats: ['bbq'], emoji: '🏮', tag: 'NEW', cover: IMG.GALBI }
         ];
 
         // 추천 뱃지 로직 (인기 메뉴)
@@ -949,8 +963,7 @@
                         <div class="name">${r.name}</div>
                         <div class="desc">${r.sub}</div>
                         <div class="meta">
-                            <span class="rating"><span class="star">★</span> ${r.rating} <span style="color:var(--text-sub);font-weight:500;">(${r.reviews})</span></span>
-                            <span class="dot">•</span>
+                            ${r.rating ? `<span class="rating"><span class="star">★</span> ${r.rating} <span style="color:var(--text-sub);font-weight:500;">(${r.reviews})</span></span><span class="dot">•</span>` : ''}
                             <span>🛵 ${r.time}</span>
                             <span class="dot">•</span>
                             <span style="color:var(--whatsapp);">배달 ${r.fee}</span>
@@ -996,17 +1009,41 @@
                     <div style="font-size:22px; font-weight:800; letter-spacing:-0.5px;">${r.name}</div>
                     <div style="font-size:13px; opacity:0.95; margin-top:4px;">${r.sub}</div>
                     <div style="display:flex; gap:12px; margin-top:10px; font-size:12.5px; font-weight:600;">
-                        <span>★ ${r.rating} (${r.reviews})</span>
-                        <span style="opacity:0.6;">•</span>
+                        ${r.rating ? `<span>★ ${r.rating} (${r.reviews})</span><span style="opacity:0.6;">•</span>` : ''}
                         <span>🛵 ${r.time}</span>
                         <span style="opacity:0.6;">•</span>
                         <span>배달 ${r.fee}</span>
                     </div>
                 </div>`;
             }
+
+            const menus = dbMenus[id];
+            if (!menus || menus.length === 0) {
+                // 메뉴 데이터가 없는 식당: WhatsApp으로 직접 문의/주문
+                const phone = (contacts[id] || '').replace(/[^0-9]/g, '');
+                html += `
+                <div class="empty">
+                    <div class="emoji">💬</div>
+                    <div class="msg">이 식당은 메뉴판 준비 중이에요.<br>WhatsApp으로 메뉴를 문의하고 바로 주문하세요!</div>
+                </div>`;
+                if (phone) {
+                    const inquiry = encodeURIComponent(`안녕하세요! ${name} 메뉴와 배달 주문 문의드립니다.\nHalo! Saya ingin bertanya menu dan pesan antar dari ${name}.`);
+                    html += `<button class="btn btn-whatsapp" onclick="window.open('https://wa.me/${phone}?text=${inquiry}', '_blank')">💬 WhatsApp으로 메뉴 문의하기</button>`;
+                }
+                list.innerHTML = html;
+                document.getElementById('view-restaurants').classList.remove('active');
+                document.getElementById('view-cart').classList.remove('active');
+                document.getElementById('view-menus').classList.add('active');
+                document.getElementById('header-title').innerText = name;
+                document.getElementById('back-btn').style.display = 'flex';
+                updateCartBar();
+                window.scrollTo(0, 0);
+                return;
+            }
+
             html += `<div class="section-title">🍽️ 메뉴</div>`;
 
-            dbMenus[id].forEach(m => {
+            menus.forEach(m => {
                 const imgSrc = m.img || IMG.KOREAN_BBQ;
                 let badge = '';
                 if (popularIds.has(m.id)) badge = '<div class="badge">인기</div>';
@@ -1203,6 +1240,11 @@
 
         // 초기 렌더
         renderRestaurants();
+
+        // PWA 서비스워커 등록 (설치형 앱 지원)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => { /* 미지원 환경 무시 */ });
+        }
     </script>
 </body>
 
