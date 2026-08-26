@@ -523,6 +523,32 @@
             border-top: 1px dashed var(--border);
         }
 
+        .pay-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 10px 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .pay-option:has(input:checked) {
+            border-color: var(--primary);
+            background: rgba(255, 61, 104, 0.05);
+        }
+
+        .pay-info {
+            margin-top: 10px;
+            padding: 12px;
+            background: var(--surface);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-sub);
+        }
+
         .btn {
             width: 100%;
             border: none;
@@ -725,6 +751,37 @@
             <div class="summary-row total"><span>총 결제금액</span><span id="sum-total">Rp 0</span></div>
         </div>
 
+        <div class="section-title" style="margin-top:24px;">💳 결제 방법</div>
+        <div class="field">
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+                <label class="pay-option">
+                    <input type="radio" name="payMethod" value="transfer" checked onchange="togglePayInfo()">
+                    <span style="font-weight:600;">🏦 계좌이체 (Transfer Bank)</span>
+                </label>
+                <label class="pay-option">
+                    <input type="radio" name="payMethod" value="qris" onchange="togglePayInfo()">
+                    <span style="font-weight:600;">📱 QRIS</span>
+                </label>
+                <label class="pay-option">
+                    <input type="radio" name="payMethod" value="card" onchange="togglePayInfo()">
+                    <span style="font-weight:600;">💳 카드결제 (Kartu, 배달 시 단말기 결제)</span>
+                </label>
+            </div>
+
+            <div id="pay-info-transfer" class="pay-info">
+                주문 전송 후 식당이 WhatsApp으로 계좌번호를 안내해 드립니다. 입금 완료 후 캡처를 전송해 주세요.<br>
+                <span style="color:var(--text-sub);">※ 본 페이지는 실제 결제를 처리하지 않으며, 안내 및 확인 용도입니다.</span>
+            </div>
+            <div id="pay-info-qris" class="pay-info" style="display:none;">
+                주문 전송 후 식당이 WhatsApp으로 QRIS 이미지를 보내드립니다. 스캔 후 결제 완료 화면을 캡처해 전송해 주세요.<br>
+                <span style="color:var(--text-sub);">※ 본 페이지는 실제 결제를 처리하지 않으며, 안내 및 확인 용도입니다.</span>
+            </div>
+            <div id="pay-info-card" class="pay-info" style="display:none;">
+                배달 기사 도착 시 카드 단말기로 결제합니다. 카드 정보는 이 앱에 입력하지 않습니다.<br>
+                <span style="color:var(--text-sub);">※ 매장/업체 사정에 따라 카드결제가 불가할 수 있으니 WhatsApp으로 사전 확인해 주세요.</span>
+            </div>
+        </div>
+
         <button class="btn btn-whatsapp" onclick="submitOrder()">💬 WhatsApp으로 주문 보내기</button>
         <button class="btn btn-ghost" onclick="backToMenus()">메뉴 더 담기</button>
     </div>
@@ -749,6 +806,9 @@
             'magal': '62217398350',        // PergiKuliner 확인 (유선) — WhatsApp 등록 여부 미확인
             'samwon': '6287829921885'      // SocialExpat 확인 (휴대폰, Plaza Indonesia점)
         };
+
+        // 유선번호로 등록되어 WhatsApp 연결 여부가 미확인된 식당
+        const UNVERIFIED_WHATSAPP = new Set(['chefkitchen', 'magal']);
 
         // 메뉴 이미지: Wikimedia Commons (실제 요리 라벨링된 사진)
         const IMG = {
@@ -792,23 +852,129 @@
 
         // 식당별 메뉴 (이미지: Wikimedia Commons 라벨링 사진)
         const dbMenus = {
+            // 대감집 공식 메뉴판(2026) 기준 — 사진은 메뉴판 원본에서 추출
             'daegamjib': [
-                { id: 1, name: '생갈비 (150g)', price: 290000, desc: '직접 숙성한 소갈비', img: IMG.GALBI },
-                { id: 2, name: '양념갈비 (150g)', price: 310000, desc: '달콤 짭짤한 특제 양념', img: IMG.GALBI },
-                { id: 3, name: '불고기 (180g)', price: 220000, desc: '야채쌈과 당면 포함', img: IMG.BULGOGI },
-                { id: 4, name: '차돌박이', price: 250000, desc: '고소한 차돌 구이', img: IMG.KOREAN_BBQ },
-                { id: 5, name: '삼겹살', price: 130000, desc: '두툼한 국내산 삼겹살', img: IMG.SAMGYEOPSAL },
-                { id: 6, name: '신 대감보쌈 (L)', price: 390000, desc: '보쌈수육+김치롤+두부', img: IMG.BOSSAM },
-                { id: 7, name: '신 대감보쌈 (S)', price: 320000, desc: '보쌈수육+김치롤+두부', img: IMG.BOSSAM },
-                { id: 8, name: '콩비지찌개', price: 99000, desc: '구수한 콩비지와 돼지고기', img: IMG.DOENJANG },
-                { id: 9, name: '청국장찌개', price: 99000, desc: '깊은 향의 청국장', img: IMG.DOENJANG },
-                { id: 10, name: '순두부찌개', price: 99000, desc: '부드러운 순두부와 해물', img: IMG.SUNDUBU },
-                { id: 11, name: '두부제육김치', price: 260000, desc: '매콤 제육볶음과 두부', img: IMG.KIMCHI_JJIGAE },
-                { id: 12, name: '대감집 도시락', price: 150000, desc: '정성 가득 반찬 도시락', img: IMG.BANCHAN },
-                { id: 13, name: '동태전골 (L)', price: 390000, desc: '동태와 두부, 야채 전골', img: IMG.DUBU_JJIGAE },
-                { id: 14, name: '동태전골 (S)', price: 310000, desc: '동태와 두부, 야채 전골', img: IMG.DUBU_JJIGAE },
-                { id: 15, name: '잡채', price: 150000, desc: '달콤한 전통 잡채', img: IMG.JAPCHAE },
-                { id: 16, name: '막걸리 (1L)', price: 140000, desc: '전통 막걸리', img: IMG.MAKGEOLLI }
+                // 소고기/돼지고기 구이
+                { id: 201, name: '생갈비 (150g)', price: 290000, desc: 'USA Choice Bone-in 소갈비 (1인분)', img: 'menu_images/dgj/saenggalbi.jpg' },
+                { id: 202, name: '양념갈비 (150g)', price: 310000, desc: '주방장 특제 양념 소갈비 (1인분)', img: 'menu_images/dgj/yangnyeomgalbi.jpg' },
+                { id: 203, name: '불고기 (180g)', price: 220000, desc: '호주산 소고기, 야채쌈·당면 포함 (1~2인)', img: 'menu_images/dgj/bulgogi.jpg' },
+                { id: 204, name: '고추장삼겹살 (180g)', price: 150000, desc: '고추장양념에 재운 매콤 삼겹살', img: 'menu_images/dgj/gochujangsam.jpg' },
+                { id: 205, name: '삼겹살 (150g)', price: 130000, desc: '15mm 두툼한 정직한 삼겹살', img: 'menu_images/dgj/samgyeopsal.jpg' },
+                { id: 206, name: '목살 (150g)', price: 130000, desc: '덴마크산 담백한 목살구이', img: 'menu_images/dgj/moksal.jpg' },
+                { id: 207, name: '간장양념목살 (150g)', price: 150000, desc: '특제 간장양념 목살 숯불구이', img: 'menu_images/dgj/moksal.jpg' },
+                // 전골류
+                { id: 208, name: '동태전골 (L)', price: 390000, desc: '동태와 대감두부 전골 (3~5인)', img: 'menu_images/dgj/dongtaejeongol.jpg' },
+                { id: 209, name: '동태전골 (S)', price: 310000, desc: '동태와 대감두부 전골 (2~3인)', img: 'menu_images/dgj/dongtaejeongol.jpg' },
+                { id: 210, name: '두부버섯전골 (L)', price: 340000, desc: '대감두부와 버섯 건강 전골 (3~5인)', img: 'menu_images/dgj/dubujeongol.jpg' },
+                { id: 211, name: '두부버섯전골 (S)', price: 260000, desc: '대감두부와 버섯 건강 전골 (2~3인)', img: 'menu_images/dgj/dubujeongol.jpg' },
+                { id: 212, name: '만두전골 (L)', price: 370000, desc: '직접 빚은 손만두 전골 (3~5인)', img: 'menu_images/dgj/mandujeongol.jpg' },
+                { id: 213, name: '만두전골 (S)', price: 290000, desc: '직접 빚은 손만두 전골 (2~3인)', img: 'menu_images/dgj/mandujeongol.jpg' },
+                { id: 214, name: '김치전골 (L)', price: 340000, desc: '익은지 김치전골, 소/돼지 선택 (3~5인)', img: 'menu_images/dgj/kimchijeongol.jpg' },
+                { id: 215, name: '김치전골 (S)', price: 260000, desc: '익은지 김치전골, 소/돼지 선택 (2~3인)', img: 'menu_images/dgj/kimchijeongol.jpg' },
+                // 메인요리
+                { id: 216, name: '신 대감보쌈 (L)', price: 390000, desc: '보쌈수육+김치롤+홈메이드 두부 (3~4인)', img: 'menu_images/dgj/bossam.jpg' },
+                { id: 217, name: '신 대감보쌈 (S)', price: 320000, desc: '보쌈수육+김치롤+홈메이드 두부 (2~3인)', img: 'menu_images/dgj/bossam.jpg' },
+                { id: 218, name: '족발 (L)', price: 360000, desc: '쫄깃 담백한 대감족발 (3~4인)', img: 'menu_images/dgj/jokbal.jpg' },
+                { id: 219, name: '족발 (S)', price: 280000, desc: '쫄깃 담백한 대감족발 (2~3인)', img: 'menu_images/dgj/jokbal.jpg' },
+                { id: 220, name: '반반족발 (L)', price: 370000, desc: '일반족발+불족발 반반 (3~4인)', img: 'menu_images/dgj/jokbal.jpg' },
+                { id: 221, name: '반반족발 (S)', price: 290000, desc: '일반족발+불족발 반반 (2~3인)', img: 'menu_images/dgj/buljokbal.jpg' },
+                { id: 222, name: '불족발 (L)', price: 370000, desc: '입에 착 붙는 매콤 불족발 (3~4인)', img: 'menu_images/dgj/buljokbal.jpg' },
+                { id: 223, name: '불족발 (S)', price: 290000, desc: '입에 착 붙는 매콤 불족발 (2~3인)', img: 'menu_images/dgj/buljokbal.jpg' },
+                { id: 224, name: '김포명품장어 숯불소금구이 (200g)', price: 390000, desc: '한국산 장어 숯불구이 (1~2인)', img: 'menu_images/dgj/jangeogui.jpg' },
+                { id: 225, name: '홍어삼합 (L)', price: 490000, desc: '한국 직수입 홍어+수육+김치 (3~4인)', img: 'menu_images/dgj/hongeosamhap.jpg' },
+                { id: 226, name: '홍어삼합 (S)', price: 350000, desc: '한국 직수입 홍어+수육+김치 (2~3인)', img: 'menu_images/dgj/hongeosamhap.jpg' },
+                { id: 227, name: '홍어단품', price: 290000, desc: '홍어 매니아를 위한 단품 (1~2인)', img: 'menu_images/dgj/hongeodanpum.jpg' },
+                { id: 228, name: '소갈비찜', price: 320000, desc: '호주산 갈비 압력솥 찜 (2~3인)', img: 'menu_images/dgj/sogalbijjim.jpg' },
+                { id: 229, name: '대감찜닭 (L)', price: 260000, desc: '간장소스 찜닭+넓적당면 (3~4인)', img: 'menu_images/dgj/jjimdak.jpg' },
+                { id: 230, name: '대감찜닭 (S)', price: 180000, desc: '간장소스 찜닭+넓적당면 (2~3인)', img: 'menu_images/dgj/jjimdak.jpg' },
+                { id: 231, name: '모두부', price: 120000, desc: '홈메이드 두부와 김치 찜', img: 'menu_images/dgj/modubu.jpg' },
+                { id: 232, name: '두부제육김치 (L)', price: 370000, desc: '직접 만든 김치와 두부, 제육볶음 (3~4인)', img: 'menu_images/dgj/dubujeyuk.jpg' },
+                { id: 233, name: '두부제육김치 (S)', price: 260000, desc: '직접 만든 김치와 두부, 제육볶음 (2~3인)', img: 'menu_images/dgj/dubujeyuk.jpg' },
+                { id: 234, name: '머릿고기수육', price: 220000, desc: '쫄깃하게 잘 삶은 머릿고기 한판', img: 'menu_images/dgj/meoritgogi.jpg' },
+                { id: 235, name: '모듬순대 (S)', price: 170000, desc: '한국 직수입 찰순대+머릿고기 (1~2인)', img: 'menu_images/dgj/modeumsundae.jpg' },
+                { id: 236, name: '모듬순대 (L)', price: 280000, desc: '한국 직수입 찰순대+머릿고기 (2~3인)', img: 'menu_images/dgj/modeumsundae.jpg' },
+                { id: 237, name: '잡채', price: 150000, desc: '소고기, 버섯, 각종 야채 듬뿍 잡채', img: 'menu_images/dgj/japchae.jpg' },
+                { id: 238, name: '오징어볶음', price: 220000, desc: '싱싱한 생물 오징어 매콤 볶음', img: 'menu_images/dgj/ojingeobokkeum.jpg' },
+                { id: 239, name: '간달치킨', price: 180000, desc: '간장+달달+매콤 특제양념 치킨 (2~4인)', img: 'menu_images/dgj/gandalchicken.jpg' },
+                { id: 240, name: '골뱅이무침', price: 290000, desc: '한국산 골뱅이 쫄깃매콤 무침+소면', img: 'menu_images/dgj/golbaengi.jpg' },
+                { id: 241, name: '닭똥집소금구이', price: 130000, desc: '대감집 인기메뉴 닭똥집 구이', img: 'menu_images/dgj/dakttongjip.jpg' },
+                { id: 242, name: '오징어튀김', price: 120000, desc: '바삭한 대감집 오징어 튀김', img: 'menu_images/dgj/ojingeotwigim.jpg' },
+                { id: 243, name: '쥐포와 땅콩', price: 120000, desc: '한국산 쥐포와 고추장, 땅콩', img: 'menu_images/dgj/jwipo.jpg' },
+                // 부침개
+                { id: 244, name: '녹두빈대떡', price: 150000, desc: '23년 베스트셀러, 따끈한 녹두전', img: 'menu_images/dgj/bindaeddeok.jpg' },
+                { id: 245, name: '감자전', price: 160000, desc: '주문 즉시 강판에 갈아 만드는 감자전', img: 'menu_images/dgj/gamjajeon.jpg' },
+                { id: 246, name: '해물파전', price: 160000, desc: '해물 가득 바삭한 파전', img: 'menu_images/dgj/haemulpajeon.jpg' },
+                { id: 247, name: '김치전', price: 140000, desc: '대감집 김치로 만든 감칠맛 김치전', img: 'menu_images/dgj/kimchijeon.jpg' },
+                // 토속특선
+                { id: 248, name: '더덕구이', price: 190000, desc: '한국산 더덕 비법양념 석쇠구이 (1~2인)', img: 'menu_images/dgj/deodeokgui.jpg' },
+                { id: 249, name: '묵사발', price: 180000, desc: '수제 도토리묵+살얼음 육수', img: 'menu_images/dgj/muksabal.jpg' },
+                { id: 250, name: '도토리묵무침', price: 160000, desc: '수제 도토리묵 비법양념 무침', img: 'menu_images/dgj/dotorimuk.jpg' },
+                // 새메뉴
+                { id: 251, name: '육전', price: 190000, desc: '미국산/호주산 소고기 육전', img: 'menu_images/dgj/yukjeon.jpg' },
+                { id: 252, name: '오징어덮밥', price: 120000, desc: '매콤 오징어볶음 덮밥+김치국', img: 'menu_images/dgj/ojingeodeopbap.jpg' },
+                { id: 253, name: '김치볶음밥', price: 110000, desc: '익은지 김치볶음밥, 스팸/소고기 토핑 선택', img: 'menu_images/dgj/kimchibokkeumbap.jpg' },
+                { id: 254, name: '몬나니돈까스', price: 120000, desc: '목살로 만든 한국식 수제 돈까스', img: 'menu_images/dgj/donkatsu.jpg' },
+                { id: 255, name: '닭곰탕', price: 120000, desc: '통째로 고아낸 고단백 닭곰탕', img: 'menu_images/dgj/dakgomtang.jpg' },
+                { id: 256, name: '닭칼국수', price: 120000, desc: '닭육수+손칼국수 든든한 한끼', img: 'menu_images/dgj/dakkalguksu.jpg' },
+                { id: 257, name: '순살미니 간달치킨', price: 120000, desc: '순살로 빠르고 간편하게', img: 'menu_images/dgj/minigandal.jpg' },
+                // 탕류
+                { id: 258, name: '선지해장국', price: 150000, desc: '한국산 선지 얼큰 해장국 (선지추가 60rb)', img: 'menu_images/dgj/seonjihaejang.jpg' },
+                { id: 259, name: '우거지갈비탕', price: 130000, desc: '우거지+호주산 갈비 한 뚝배기', img: 'menu_images/dgj/ugeojigalbitang.jpg' },
+                { id: 260, name: '순대국', price: 150000, desc: '한국 직수입 순대와 머릿고기 국밥', img: 'menu_images/dgj/sundaeguk.jpg' },
+                { id: 261, name: '소고기장터국밥', price: 130000, desc: '시원담백한 국물의 장터국밥', img: 'menu_images/dgj/jangteogukbab.jpg' },
+                { id: 262, name: '갈비탕', price: 130000, desc: '호주산 갈비 반나절 고아낸 진국', img: 'menu_images/dgj/galbitang.jpg' },
+                // 쌈밥 & 비빔밥
+                { id: 263, name: '우렁쌈밥정식', price: 160000, desc: '우렁강된장+야채쌈, 불고기/고추장삼겹 선택', img: 'menu_images/dgj/ureongssambap.jpg' },
+                { id: 264, name: '열무보리비빔밥', price: 120000, desc: '열무김치+보리밥, 미니 된장찌개 포함', img: 'menu_images/dgj/yeolmubori.jpg' },
+                { id: 265, name: '꼬막비빔밥', price: 120000, desc: '신선한 꼬막장 비빔밥, 미니 된장찌개 포함', img: 'menu_images/dgj/kkomakbibimbap.jpg' },
+                // 정식 & 도시락
+                { id: 266, name: '대감보쌈정식 (1인)', price: 190000, desc: '보쌈수육+두부+김치롤+된장찌개+밥', img: 'menu_images/dgj/bossamjeongsik.jpg' },
+                { id: 267, name: '아홉나물보리밥정식 (1인)', price: 140000, desc: '9가지 한국나물 비빔밥+찌개 선택', img: 'menu_images/dgj/ahopnamul.jpg' },
+                { id: 268, name: '대감집밥 도시락', price: 150000, desc: '맞춤형 도시락 (110k/150k/180k/200k)', img: 'menu_images/dgj/dosirak.jpg' },
+                // 생선
+                { id: 269, name: '동태탕', price: 140000, desc: '싱싱한 동태 얼큰탕, 매운탕/지리 선택', img: 'menu_images/dgj/dongtaetang.jpg' },
+                { id: 270, name: '동태알탕', price: 150000, desc: '동태와 알을 동시에', img: 'menu_images/dgj/dongtaealtang.jpg' },
+                { id: 271, name: '알탕', price: 160000, desc: '시원하고 든든한 알탕', img: 'menu_images/dgj/altang.jpg' },
+                { id: 272, name: '고등어구이', price: 140000, desc: '노르웨이산 고등어 통구이+공기밥', img: 'menu_images/dgj/godeungeogui.jpg' },
+                // 찌개 (모두 대감집 수제두부 사용)
+                { id: 273, name: '두부젓국찌개', price: 99000, desc: '새우젓으로 맑게 간한 두부찌개', img: 'menu_images/dgj/dubujeotguk.jpg' },
+                { id: 274, name: '순두부찌개', price: 99000, desc: '소고기/해물/버섯 중 토핑 선택', img: 'menu_images/dgj/sundubu.jpg' },
+                { id: 275, name: '김치찌개', price: 99000, desc: '익은지+대감두부+삼겹살, 소/돼지 선택', img: 'menu_images/dgj/kimchijjigae.jpg' },
+                { id: 276, name: '우렁된장찌개', price: 99000, desc: '쫀득한 우렁과 두부 야채 된장찌개', img: 'menu_images/dgj/ureongdoenjang.jpg' },
+                { id: 277, name: '우거지찌개', price: 99000, desc: '멸치육수+우거지 시골밥상', img: 'menu_images/dgj/ugeojijjigae.jpg' },
+                { id: 278, name: '콩비지찌개', price: 99000, desc: '콩을 통째로 갈아 만든 베스트 메뉴', img: 'menu_images/dgj/kongbiji.jpg' },
+                { id: 279, name: '청국장찌개', price: 99000, desc: '26년 경력 명인의 생청국장', img: 'menu_images/dgj/cheonggukjang.jpg' },
+                { id: 280, name: '콩나물해장국', price: 99000, desc: '시원한 멸치육수 콩나물국+계란', img: 'menu_images/dgj/kongnamulhaejang.jpg' },
+                { id: 281, name: '소고기미역국', price: 99000, desc: '한국산 미역+소고기 듬뿍', img: 'menu_images/dgj/miyeokguk.jpg' },
+                // 국수류
+                { id: 282, name: '김치말이국수', price: 120000, desc: '살얼음 비법육수 김치말이 냉국수', img: 'menu_images/dgj/kimchimari.jpg' },
+                { id: 283, name: '콩국수', price: 130000, desc: '순수 콩 100% 콩물, 소면/칼국수면 선택', img: 'menu_images/dgj/kongguksu.jpg' },
+                { id: 284, name: '잔치국수', price: 110000, desc: '멸치육수 소면국수', img: 'menu_images/dgj/janchiguksu.jpg' },
+                { id: 285, name: '손칼국수', price: 110000, desc: '직접 반죽해 썰어만든 쫄깃 칼국수', img: 'menu_images/dgj/kalguksu.jpg' },
+                { id: 286, name: '비빔국수', price: 110000, desc: '황금비율 양념장 비빔국수', img: 'menu_images/dgj/bibimguksu.jpg' },
+                { id: 287, name: '열무김치국수', price: 110000, desc: '담백한 열무 물김치 국수', img: 'menu_images/dgj/yeolmuguksu.jpg' },
+                // 만두 & 죽
+                { id: 288, name: '대감손만두 (8pc)', price: 80000, desc: '수제 찐만두, 소고기/돼지 선택 (4pc 50rb)', img: 'menu_images/dgj/sonmandu.jpg' },
+                { id: 289, name: '대감군만두 (8pc)', price: 100000, desc: '수제 군만두, 소고기/돼지 선택 (4pc 60rb)', img: 'menu_images/dgj/gunmandu.jpg' },
+                { id: 290, name: '손만두국', price: 110000, desc: '큼직한 손만두 5개+진한 국물+미니밥', img: 'menu_images/dgj/manduguk.jpg' },
+                { id: 291, name: '물만두', price: 100000, desc: '한입 사이즈 미니 물만두 (돼지)', img: 'menu_images/dgj/mulmandu.jpg' },
+                { id: 292, name: '전복죽', price: 160000, desc: '한국 완도산 활전복 보양죽', img: 'menu_images/dgj/jeonbokjuk.jpg' },
+                { id: 293, name: '소고기야채죽', price: 100000, desc: '호주산 소고기+야채 건강죽', img: 'menu_images/dgj/yachaejuk.jpg' },
+                // 사이드
+                { id: 294, name: '라면', price: 60000, desc: '한국 직수입 라면', img: 'menu_images/dgj/ramyeon.jpg' },
+                { id: 295, name: '계란찜', price: 70000, desc: '보들보들 뚝배기 계란찜', img: 'menu_images/dgj/gyeranjjim.jpg' },
+                { id: 296, name: '계란말이', price: 120000, desc: '두툼한 수제 계란말이', img: 'menu_images/dgj/gyeranmari.jpg' },
+                { id: 297, name: '공기밥', price: 15000, desc: '공기밥 (보리밥 30rb)', img: '' },
+                // 주류 & 음료
+                { id: 298, name: '대감막걸리 (1L)', price: 140000, desc: '26년 전통비법 수제 막걸리 (500ml 75rb)', img: 'menu_images/dgj/makgeolli.jpg' },
+                { id: 299, name: '막걸리하이볼', price: 60000, desc: '수제 막걸리+유자소다 하이볼', img: 'menu_images/dgj/highball.jpg' },
+                { id: 300, name: '참이슬 / 처음처럼', price: 150000, desc: '한국 직수입 소주', img: 'menu_images/dgj/soju.jpg' },
+                { id: 301, name: '새로 / 이즈백 / 한라산제로', price: 160000, desc: '한국 직수입 소주', img: 'menu_images/dgj/soju.jpg' },
+                { id: 302, name: '청포도에이슬 / 딸기에이슬', price: 160000, desc: '과일소주', img: 'menu_images/dgj/soju.jpg' },
+                { id: 303, name: '빈땅맥주 (620ml)', price: 60000, desc: '인도네시아 맥주 (330ml 40rb)', img: 'menu_images/dgj/beer.jpg' },
+                { id: 304, name: '콜라 / 스프라이트 (250ml)', price: 20000, desc: '탄산음료 (밀키스 25rb)', img: 'menu_images/dgj/softdrink.jpg' },
+                { id: 305, name: '생과일주스', price: 40000, desc: '멜론/토마토/오렌지/사과/당근/딸기 등', img: 'menu_images/dgj/juice.jpg' },
+                { id: 306, name: '둡카롱 (두부마카롱 1개)', price: 24000, desc: '두부 70% 건강 마카롱, 7가지 맛 (6개 120rb)', img: 'menu_images/dgj/dubcarong.jpg' }
             ],
             'chunghaesu': [
                 { id: 21, name: '모듬회 (M)', price: 1200000, desc: '활어 모듬회 세트', img: IMG.SASHIMI },
@@ -1193,6 +1359,19 @@
             document.getElementById('reservation-field').style.display = isReserve ? 'block' : 'none';
         }
 
+        const PAY_METHOD_LABEL = {
+            transfer: { ko: '🏦 계좌이체', en: 'Transfer Bank' },
+            qris: { ko: '📱 QRIS', en: 'QRIS' },
+            card: { ko: '💳 카드결제 (배달 시 단말기)', en: 'Kartu (mesin EDC saat antar)' }
+        };
+
+        function togglePayInfo() {
+            const method = document.querySelector('input[name="payMethod"]:checked').value;
+            ['transfer', 'qris', 'card'].forEach(m => {
+                document.getElementById('pay-info-' + m).style.display = (m === method) ? 'block' : 'none';
+            });
+        }
+
         function submitOrder() {
             const isReserve = document.querySelector('input[name="sendType"]:checked').value === 'reserve';
             const reserveTime = document.getElementById('reservation-time').value;
@@ -1206,11 +1385,15 @@
             const timeLabel = isReserve ? `예약 ${reserveTime.replace('T', ' ')}` : '즉시발송';
             const timeLabelEn = isReserve ? `Reservasi ${reserveTime.replace('T', ' ')}` : 'Kirim Sekarang';
 
+            const payMethod = document.querySelector('input[name="payMethod"]:checked').value;
+            const payLabel = PAY_METHOD_LABEL[payMethod];
+
             const total = cartTotal();
             let msg = `*[자카르타 K-Food 배달 주문]*\n\n`;
             msg += `🏪 *식당:* ${currentResName}\n`;
             msg += `⏰ *발송:* ${timeLabel}\n`;
-            msg += `📍 *주소:* ${addr}\n\n`;
+            msg += `📍 *주소:* ${addr}\n`;
+            msg += `💳 *결제방법:* ${payLabel.ko}\n\n`;
             msg += `📋 *주문 내역:*\n`;
             cart.forEach(i => msg += `• ${i.name} × ${i.qty} = Rp ${(i.price * i.qty).toLocaleString()}\n`);
             msg += `\n💰 *총 합계: Rp ${total.toLocaleString()}*\n`;
@@ -1218,7 +1401,8 @@
             msg += `*[Pesanan Pengiriman Jakarta]*\n`;
             msg += `🏪 *Restoran:* ${currentResName}\n`;
             msg += `⏰ *Pengiriman:* ${timeLabelEn}\n`;
-            msg += `📍 *Alamat:* ${addr}\n\n`;
+            msg += `📍 *Alamat:* ${addr}\n`;
+            msg += `💳 *Pembayaran:* ${payLabel.en}\n\n`;
             msg += `📋 *Pesanan:*\n`;
             cart.forEach(i => msg += `• ${i.name} × ${i.qty} = Rp ${(i.price * i.qty).toLocaleString()}\n`);
             msg += `\n💰 *Total: Rp ${total.toLocaleString()}*`;
@@ -1231,6 +1415,10 @@
             const phone = rawPhone.replace(/[^0-9]/g, '');
             if (phone.length < 7 || phone.length > 15) {
                 if (!confirm('식당의 전화번호가 올바르지 않습니다. 그래도 WhatsApp을 열겠습니까?')) return;
+            }
+            // 유선번호로 등록되어 WhatsApp 연결이 안 될 수 있는 식당 (미확인)
+            if (UNVERIFIED_WHATSAPP.has(currentResId)) {
+                if (!confirm('이 식당의 연락처는 유선번호로 등록되어 있어 WhatsApp이 연결되지 않을 수 있습니다.\n그래도 시도하시겠습니까? (연결이 안 되면 식당에 직접 전화로 문의해 주세요)')) return;
             }
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 
