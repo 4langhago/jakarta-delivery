@@ -1,0 +1,5 @@
+# OMC 런타임 상태 (세션별 임시 산출물)
+.omc/
+
+# 메뉴판 추출 원본/중간 산출물 (약 100MB, 최종본은 menu_images/dgj/ 에 반영)
+menu_images/new/

@@ -746,9 +746,14 @@
 
         <div class="summary">
             <div class="summary-row"><span>주문 금액</span><span id="sum-items">Rp 0</span></div>
-            <div class="summary-row"><span>배달팁</span><span style="color:var(--whatsapp);font-weight:700;">무료</span>
+            <div class="summary-row"><span>배달비</span><span style="color:var(--text-sub);font-weight:600;">식당 안내</span>
             </div>
-            <div class="summary-row total"><span>총 결제금액</span><span id="sum-total">Rp 0</span></div>
+            <div class="summary-row total"><span>메뉴 합계</span><span id="sum-total">Rp 0</span></div>
+        </div>
+        <div class="pay-info" style="margin-top:10px;">
+            배달은 식당에서 직접 처리합니다. <b>배달비와 소요시간은 주문 전송 후 식당이 WhatsApp으로 안내</b>해 드리며,
+            위 금액에는 포함되어 있지 않습니다.<br>
+            <span style="color:var(--text-sub);">※ 식당에 따라 배달 가능 지역이 다를 수 있습니다.</span>
         </div>
 
         <div class="section-title" style="margin-top:24px;">💳 결제 방법</div>
@@ -1080,17 +1085,23 @@
             ]
         };
 
-        // 식당 메타 정보 (평점 / 배달시간 / 카테고리 / 커버)
+        // 식당 메타 정보 (평점 / 배달조건 / 카테고리 / 커버)
+        //
+        // delivery 필드: 배송은 식당이 직접 처리하므로(2026-09-19 결정) 플랫폼은
+        // 배달비·소요시간을 알 수 없다. 추정치를 쓰지 않고 수집된 값만 표기한다.
+        //   수집 완료 → { areas: ['Senopati', ...], fee: 25000, minOrder: 150000 }
+        //   미수집     → null  (UI에 "식당 안내"로 노출)
+        // 이전 버전의 time:'30-40분' / fee:'무료'는 근거 없는 값이라 제거됨.
         const restaurants = [
-            { id: 'daegamjib', name: '대감집', sub: '수제 두부 & 갈비구이', addr: 'Jl. Wijaya 9 No.23, Melawai', rating: 4.8, reviews: 312, time: '30-40분', fee: '무료', cats: ['bbq', 'stew'], emoji: '🥢', tag: 'HOT', cover: IMG.GALBI },
-            { id: 'chunghaesu', name: '청해수산', sub: '신선 모듬회 · 다금바리 · 장어', addr: 'Jl. Senopati No.49', rating: 4.9, reviews: 248, time: '40-50분', fee: '무료', cats: ['seafood'], emoji: '🍣', tag: 'NEW', cover: IMG.SASHIMI },
-            { id: 'tobak', name: '토박 Tobak', sub: '프리미엄 숯불구이 & 한국 주류', addr: 'Jl. Wolter Monginsidi No.30', rating: 4.7, reviews: 189, time: '35-45분', fee: '무료', cats: ['bbq'], emoji: '🔥', tag: 'BEST', cover: IMG.KOREAN_BBQ },
-            { id: 'chunggiwa', name: '청기와', sub: '참숯불 우삼겹 · 돼지갈비', addr: 'Jl. Dharmawangsa III No.2', rating: 4.6, reviews: 421, time: '30-40분', fee: '무료', cats: ['bbq', 'rice'], emoji: '🥩', tag: '인기', cover: IMG.SAMGYEOPSAL },
-            { id: 'chefkitchen', name: "Chef's Kitchen", sub: '일본식 두부 뚝배기 & 시푸드', addr: 'Kelapa Gading / Fatmawati / PIK', rating: 4.5, reviews: 156, time: '40-55분', fee: '무료', cats: ['seafood', 'indo'], emoji: '🍲', tag: 'NEW', cover: IMG.MAPO_TOFU },
-            { id: 'sannaedeul', name: '산내들', sub: '생등심 · 파전 · 대중 한식', addr: 'Jakarta (문의)', rating: 4.6, reviews: 203, time: '30-40분', fee: '무료', cats: ['bbq', 'rice', 'stew'], emoji: '🌿', tag: '추천', cover: IMG.PAJEON },
-            { id: 'bornga', name: '본가 Bornga', sub: '백종원 브랜드 · 우삼겹 전문 (메뉴는 WhatsApp 문의)', addr: 'Jl. Wolter Monginsidi No.65, Senopati', time: '35-45분', fee: '무료', cats: ['bbq'], emoji: '🥩', tag: 'NEW', cover: IMG.BULGOGI },
-            { id: 'magal', name: '마갈 Magal', sub: '마포갈매기 BBQ (메뉴는 WhatsApp 문의)', addr: 'Jl. Senopati No.60, Kebayoran Baru', time: '35-45분', fee: '무료', cats: ['bbq'], emoji: '🔥', tag: 'NEW', cover: IMG.SAMGYEOPSAL },
-            { id: 'samwon', name: '삼원가든 Samwon Garden', sub: '1976년 전통 갈비 명가 (메뉴는 WhatsApp 문의)', addr: 'Plaza Indonesia, Jl. M.H. Thamrin', time: '40-55분', fee: '무료', cats: ['bbq'], emoji: '🏮', tag: 'NEW', cover: IMG.GALBI }
+            { id: 'daegamjib', name: '대감집', sub: '수제 두부 & 갈비구이', addr: 'Jl. Wijaya 9 No.23, Melawai', rating: 4.8, reviews: 312, delivery: null, cats: ['bbq', 'stew'], emoji: '🥢', tag: 'HOT', cover: IMG.GALBI },
+            { id: 'chunghaesu', name: '청해수산', sub: '신선 모듬회 · 다금바리 · 장어', addr: 'Jl. Senopati No.49', rating: 4.9, reviews: 248, delivery: null, cats: ['seafood'], emoji: '🍣', tag: 'NEW', cover: IMG.SASHIMI },
+            { id: 'tobak', name: '토박 Tobak', sub: '프리미엄 숯불구이 & 한국 주류', addr: 'Jl. Wolter Monginsidi No.30', rating: 4.7, reviews: 189, delivery: null, cats: ['bbq'], emoji: '🔥', tag: 'BEST', cover: IMG.KOREAN_BBQ },
+            { id: 'chunggiwa', name: '청기와', sub: '참숯불 우삼겹 · 돼지갈비', addr: 'Jl. Dharmawangsa III No.2', rating: 4.6, reviews: 421, delivery: null, cats: ['bbq', 'rice'], emoji: '🥩', tag: '인기', cover: IMG.SAMGYEOPSAL },
+            { id: 'chefkitchen', name: "Chef's Kitchen", sub: '일본식 두부 뚝배기 & 시푸드', addr: 'Kelapa Gading / Fatmawati / PIK', rating: 4.5, reviews: 156, delivery: null, cats: ['seafood', 'indo'], emoji: '🍲', tag: 'NEW', cover: IMG.MAPO_TOFU },
+            { id: 'sannaedeul', name: '산내들', sub: '생등심 · 파전 · 대중 한식', addr: 'Jakarta (문의)', rating: 4.6, reviews: 203, delivery: null, cats: ['bbq', 'rice', 'stew'], emoji: '🌿', tag: '추천', cover: IMG.PAJEON },
+            { id: 'bornga', name: '본가 Bornga', sub: '백종원 브랜드 · 우삼겹 전문 (메뉴는 WhatsApp 문의)', addr: 'Jl. Wolter Monginsidi No.65, Senopati', delivery: null, cats: ['bbq'], emoji: '🥩', tag: 'NEW', cover: IMG.BULGOGI },
+            { id: 'magal', name: '마갈 Magal', sub: '마포갈매기 BBQ (메뉴는 WhatsApp 문의)', addr: 'Jl. Senopati No.60, Kebayoran Baru', delivery: null, cats: ['bbq'], emoji: '🔥', tag: 'NEW', cover: IMG.SAMGYEOPSAL },
+            { id: 'samwon', name: '삼원가든 Samwon Garden', sub: '1976년 전통 갈비 명가 (메뉴는 WhatsApp 문의)', addr: 'Plaza Indonesia, Jl. M.H. Thamrin', delivery: null, cats: ['bbq'], emoji: '🏮', tag: 'NEW', cover: IMG.GALBI }
         ];
 
         // 추천 뱃지 로직 (인기 메뉴)
@@ -1130,14 +1141,35 @@
                         <div class="desc">${r.sub}</div>
                         <div class="meta">
                             ${r.rating ? `<span class="rating"><span class="star">★</span> ${r.rating} <span style="color:var(--text-sub);font-weight:500;">(${r.reviews})</span></span><span class="dot">•</span>` : ''}
-                            <span>🛵 ${r.time}</span>
-                            <span class="dot">•</span>
-                            <span style="color:var(--whatsapp);">배달 ${r.fee}</span>
+                            <span${r.delivery ? ' style="color:var(--whatsapp);"' : ''}>${deliveryLabel(r)}</span>
                         </div>
+                        ${deliveryAreaLabel(r) ? `<div class="addr">${deliveryAreaLabel(r)}</div>` : ''}
                         <div class="addr">📍 ${r.addr}</div>
                     </div>
                 </div>
             `).join('');
+        }
+
+        // 배달 조건 표시 문자열 생성.
+        // 값이 없으면 추정하지 않고 식당 안내임을 명시한다.
+        function deliveryLabel(r) {
+            const d = r.delivery;
+            if (!d) return '배달비·시간 식당 안내';
+            const parts = [];
+            if (typeof d.fee === 'number') {
+                parts.push(d.fee === 0 ? '배달비 무료' : `배달비 Rp ${d.fee.toLocaleString()}`);
+            }
+            if (typeof d.minOrder === 'number') {
+                parts.push(`최소 Rp ${d.minOrder.toLocaleString()}`);
+            }
+            return parts.length ? parts.join(' · ') : '배달비·시간 식당 안내';
+        }
+
+        // 배달 가능 권역 표시. 미수집이면 빈 문자열(표시 안 함).
+        function deliveryAreaLabel(r) {
+            const areas = r.delivery && r.delivery.areas;
+            if (!areas || !areas.length) return '';
+            return `🛵 ${areas.join(' · ')} 배달`;
         }
 
         function toggleLike(btn) {
@@ -1176,10 +1208,9 @@
                     <div style="font-size:13px; opacity:0.95; margin-top:4px;">${r.sub}</div>
                     <div style="display:flex; gap:12px; margin-top:10px; font-size:12.5px; font-weight:600;">
                         ${r.rating ? `<span>★ ${r.rating} (${r.reviews})</span><span style="opacity:0.6;">•</span>` : ''}
-                        <span>🛵 ${r.time}</span>
-                        <span style="opacity:0.6;">•</span>
-                        <span>배달 ${r.fee}</span>
+                        <span>${deliveryLabel(r)}</span>
                     </div>
+                    ${deliveryAreaLabel(r) ? `<div style="font-size:12.5px; opacity:0.95; margin-top:6px;">${deliveryAreaLabel(r)}</div>` : ''}
                 </div>`;
             }
 
@@ -1396,7 +1427,8 @@
             msg += `💳 *결제방법:* ${payLabel.ko}\n\n`;
             msg += `📋 *주문 내역:*\n`;
             cart.forEach(i => msg += `• ${i.name} × ${i.qty} = Rp ${(i.price * i.qty).toLocaleString()}\n`);
-            msg += `\n💰 *총 합계: Rp ${total.toLocaleString()}*\n`;
+            msg += `\n💰 *메뉴 합계: Rp ${total.toLocaleString()}* (배달비 별도)\n`;
+            msg += `\n🛵 배달 가능 여부와 *배달비·소요시간*을 알려주세요.\n`;
             msg += `\n---\n`;
             msg += `*[Pesanan Pengiriman Jakarta]*\n`;
             msg += `🏪 *Restoran:* ${currentResName}\n`;
@@ -1405,7 +1437,8 @@
             msg += `💳 *Pembayaran:* ${payLabel.en}\n\n`;
             msg += `📋 *Pesanan:*\n`;
             cart.forEach(i => msg += `• ${i.name} × ${i.qty} = Rp ${(i.price * i.qty).toLocaleString()}\n`);
-            msg += `\n💰 *Total: Rp ${total.toLocaleString()}*`;
+            msg += `\n💰 *Subtotal: Rp ${total.toLocaleString()}* (belum termasuk ongkir)\n`;
+            msg += `\n🛵 Mohon informasikan apakah bisa diantar ke alamat ini, beserta *ongkir dan estimasi waktu*.`;
 
             const rawPhone = contacts[currentResId];
             if (!rawPhone) {
@@ -1423,7 +1456,8 @@
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 
             window.open(url, '_blank');
-            alert('WhatsApp으로 연결됩니다. 메시지를 전송해 주세요!');
+            alert('WhatsApp으로 연결됩니다. 메시지를 전송해 주세요!\n\n'
+                + '전송 후 식당이 배달 가능 여부와 배달비·소요시간을 WhatsApp으로 안내해 드립니다.');
             goHome();
         }
 
